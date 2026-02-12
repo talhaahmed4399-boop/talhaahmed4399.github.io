@@ -2,32 +2,33 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PK Lines eSports Ultimate Hub</title><!-- AOS for scroll animations --><link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet"><!-- Chart.js --><script src="https://cdn.jsdelivr.net/npm/chart.js"></script><style>
-/* ===== GENERAL STYLES ===== */
-body{margin:0;font-family:Arial, Helvetica, sans-serif;background:#0b0f1a;color:white;}
+<title>PK LIONS ESports Ultimate Hub - Enhanced</title><!-- AOS for scroll animations --><link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet"><!-- Chart.js --><script src="https://cdn.jsdelivr.net/npm/chart.js"></script><style>
+body{margin:0;font-family:Arial, Helvetica, sans-serif;background:#0b0f1a;color:white;overflow-x:hidden;}
 a{text-decoration:none;color:#00ffff;}
 button,input{border:none;border-radius:5px;padding:12px;margin:5px 0;font-size:15px;transition:0.3s;}
 button{background:#00ffff;color:black;font-weight:bold;cursor:pointer;box-shadow:0 0 10px #00ffff;}
 button:hover{background:white;color:black;box-shadow:0 0 20px #00ffff;}
 input{width:90%;background:#0b0f1a;color:white;border:1px solid #00ffff;}
 .container{max-width:450px;margin:30px auto;background:#11182b;padding:25px;border-radius:12px;box-shadow:0 0 15px #00ffff50;}
-.badge{background:#00ffff;color:black;padding:6px 12px;border-radius:5px;display:inline-block;margin:5px;}
+.badge{background:#00ffff;color:black;padding:6px 12px;border-radius:5px;display:inline-block;margin:5px;animation:rotateBadge 5s linear infinite;}
+@keyframes rotateBadge {0%{transform:rotate(0deg);}100%{transform:rotate(360deg);}}
 .footer{text-align:center;margin-top:20px;font-size:13px;color:#aaa;}
 .rules, .winners, .leaderboard, .players, .events, .sponsors, .achievements, .multimedia, .community{background:#11182b;padding:20px;border-radius:10px;margin:20px auto;max-width:900px;}
-.rules h2, .winners h2, .leaderboard h2, .players h2, .events h2, .sponsors h2, .achievements h2, .multimedia h2, .community h2{color:#00ffff;}
+.rules h2, .winners h2, .leaderboard h2, .players h2, .events h2, .sponsors h2, .achievements h2, .multimedia h2, .community h2{color:#00ffff;text-shadow:0 0 10px #00ffff;}
 table{width:100%;border-collapse: collapse;margin-top:10px;}
 table, th, td{border:1px solid #00ffff;}
 th, td{padding:8px;text-align:center;}
 th{background:#00ffff;color:black;}
-/* HERO STYLES */
 #hero{height:550px;display:flex;align-items:center;justify-content:center;flex-direction:column;text-align:center;color:#00ffff;position:relative;overflow:hidden;}
-#hero h1{font-size:50px;color:#00ffff;text-shadow:0 0 15px #00ffff;animation:glow 2s ease-in-out infinite alternate;}
-@keyframes glow{from{text-shadow:0 0 10px #00ffff;}to{text-shadow:0 0 25px #00ffff;}}
+#hero h1{font-size:50px;color:#00ffff;text-shadow:0 0 15px #00ffff,0 0 30px #0ff,0 0 45px #0ff;animation:glow 2s ease-in-out infinite alternate;}
+@keyframes glow{from{text-shadow:0 0 10px #00ffff,0 0 20px #0ff;}to{text-shadow:0 0 25px #00ffff,0 0 50px #0ff;}}
 #hero button{animation:pulse 2s infinite;}
-@keyframes pulse{0%{box-shadow:0 0 10px #00ffff;}50%{box-shadow:0 0 20px #00ffff;}100%{box-shadow:0 0 10px #00ffff;}}
+@keyframes pulse{0%{box-shadow:0 0 10px #00ffff;}50%{box-shadow:0 0 25px #0ff;}100%{box-shadow:0 0 10px #00ffff;}}
 .hero-slide{display:none;position:absolute;top:0;left:0;width:100%;height:100%;background-size:cover;background-position:center;}
+.confetti-piece{width:10px;height:10px;position:absolute;top:0;left:50%;background-color:#0ff;opacity:0.8;animation:fall 5s linear infinite;}
+@keyframes fall{0%{transform:translateY(0) rotate(0deg);}100%{transform:translateY(700px) rotate(360deg);opacity:0;}}
 </style></head>
-<body><!-- HERO SECTION --><section id="hero">
+<body><!-- HERO --><section id="hero">
   <div style="background: rgba(0,0,0,0.5); width:100%; height:100%; position:absolute; top:0; left:0;"></div>
   <div class="hero-slide" style="background:url('https://drive.google.com/uc?export=view&id=1uAue7LhtvtddKM7JCW-1t1UPfrFhHSkx') no-repeat center center/cover;"></div>
   <div class="hero-slide" style="background:url('https://picsum.photos/1200/550?grayscale') no-repeat center center/cover;"></div>
@@ -40,7 +41,16 @@ th{background:#00ffff;color:black;}
       <a href="https://wa.me/923701561639"><button>JOIN WHATSAPP</button></a>
     </div>
   </div>
-</section><script>
+</section><!-- CONFETTI ANIMATION --><script>
+for(let i=0;i<50;i++){
+  let confetti=document.createElement('div');
+  confetti.classList.add('confetti-piece');
+  confetti.style.left=Math.random()*100+'%';
+  confetti.style.backgroundColor=hsl(${Math.random()*360},100%,50%);
+  confetti.style.animationDuration=(3+Math.random()*3)+'s';
+  document.body.appendChild(confetti);
+}
+</script><script>
 let slideIndex=0;function showSlides(){
 let slides=document.getElementsByClassName("hero-slide");
 for(let i=0;i<slides.length;i++){slides[i].style.display="none";}
@@ -76,7 +86,7 @@ setInterval(function() {
     <input type="file" name="Screenshot"><br>
     <button type="submit">REGISTER NOW</button>
   </form>
-</div><!-- TOURNAMENT RULES --><div class="rules" data-aos="fade-right">
+</div><!-- RULES --><div class="rules" data-aos="fade-right">
 <h2>TOURNAMENT RULES</h2>
 <ul>
 <li>Entry is FREE.</li>
@@ -86,54 +96,15 @@ setInterval(function() {
 <li>Screenshot required for confirmation.</li>
 <li>Respect all players and maintain fair play.</li>
 </ul>
-</div><!-- UPCOMING EVENTS --><div class="events" data-aos="fade-left">
-<h2>UPCOMING TOURNAMENTS</h2>
-<ul>
-<li>Mini League Season 5 – 25 Feb 2026 – Entry Free – Prize 50,000 PKR</li>
-<li>Battle Royale Cup – 10 Mar 2026 – Entry Free – Prize 75,000 PKR</li>
-</ul>
-</div><!-- COMMUNITY & PLAYERS --><div class="community" data-aos="fade-up">
-<h2>PLAYER PROFILES & TEAMS</h2>
-<ul>
-<li>Team Alpha – Leader: PlayerX – Kills: 12 – Points: 85</li>
-<li>Team Dragon – Leader: PlayerY – Kills: 18 – Points: 100</li>
-<li>Team Shadow – Leader: PlayerZ – Kills: 15 – Points: 95</li>
-</ul>
-</div><!-- ACHIEVEMENTS & BADGES --><div class="achievements" data-aos="fade-right">
-<h2>ACHIEVEMENTS & BADGES</h2>
-<div class="badge">MVP</div><div class="badge">Sharp Shooter</div><div class="badge">Survivor</div>
 </div><!-- MULTIMEDIA --><div class="multimedia" data-aos="fade-left">
 <h2>HIGHLIGHT VIDEOS</h2>
-<iframe width="100%" height="315" src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allowfullscreen></iframe>
-</div><!-- LEADERBOARD & STATS --><div class="players" data-aos="fade-up">
-<h2>LEADERBOARD</h2>
-<table id="playerTable">
-<tr><th>Team</th><th>Leader</th><th>PUBG ID</th><th>WhatsApp</th><th>Points</th><th>Kills</th></tr>
-<!-- Placeholder rows -->
-<tr><td>Alpha Squad</td><td>PlayerX</td><td>ID123</td><td>03012345678</td><td>100</td><td>18</td></tr>
-<tr><td>Dragon Force</td><td>PlayerY</td><td>ID456</td><td>03087654321</td><td>95</td><td>15</td></tr>
-</table>
-</div><!-- CHARTS --><div class="stats" data-aos="fade-up">
-<h2>PLAYER STATS</h2>
-<canvas id="statsChart"></canvas>
-<script>
-const ctx = document.getElementById('statsChart').getContext('2d');
-new Chart(ctx, {
-    type: 'bar',
-    data: {
-        labels: ['PlayerX','PlayerY','PlayerZ'],
-        datasets: [{
-            label: 'Kills',
-            data: [18,15,12],
-            backgroundColor: '#00ffff'
-        }]
-    },
-    options:{responsive:true,plugins:{legend:{display:false}}}
-});
-</script>
-</div><!-- SPONSORS & DONATE --><div class="sponsors" data-aos="fade-up">
-<h2>SPONSORS & SUPPORT</h2>
-<p>Supported by: GamerZone, PK eSports Shop</p>
-<button onclick="window.open('https://www.paypal.com/donate','_blank')">DONATE</button>
-</div><div class="footer" data-aos="fade-up">Powered by PK LIONS ESports</div><script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script><script>AOS.init({duration:1000});</script></body>
+<iframe width="100%" height="315" src="https://www.youtube.com/embed?listType=user_uploads&list=staresports67" frameborder="0" allowfullscreen></iframe>
+</div><!-- DONATE BUTTON --><div class="sponsors" data-aos="fade-up">
+<h2>SUPPORT US</h2>
+<p>Donate via EasyPaisa: <strong>03111784089</strong></p>
+<button onclick="window.open('https://www.easypaisa.com.pk/', '_blank')">DONATE NOW</button>
+</div><div class="footer" data-aos="fade-up">Powered by PK Lines eSports</div>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>AOS.init({duration:1000});</script>
+</body>
 </html>
