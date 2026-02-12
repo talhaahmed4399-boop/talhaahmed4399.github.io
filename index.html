@@ -4,14 +4,15 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>PK Lines eSports Tournament</title>
-
 <style>
-body{
+/* ===== GENERAL STYLES ===== */
+body {
   margin:0;
   font-family: Arial, Helvetica, sans-serif;
   background:#0b0f1a;
   color:white;
 }
+a {text-decoration:none;}
 button,input{
   border:none;
   border-radius:5px;
@@ -56,15 +57,31 @@ input{
   font-size:13px;
   color:#aaa;
 }
-.rules{
+.rules, .winners, .leaderboard, .players {
   background:#11182b;
   padding:20px;
   border-radius:10px;
   margin:20px auto;
   max-width:700px;
 }
-.rules h2{
+.rules h2, .winners h2, .leaderboard h2, .players h2 {
   color:#00ffff;
+}
+table{
+  width:100%;
+  border-collapse: collapse;
+  margin-top:10px;
+}
+table, th, td{
+  border:1px solid #00ffff;
+}
+th, td{
+  padding:8px;
+  text-align:center;
+}
+th{
+  background:#00ffff;
+  color:black;
 }
 </style>
 </head>
@@ -72,7 +89,7 @@ input{
 <body>
 
 <!-- HERO SECTION -->
-<section id="hero" style="background: url('https://drive.google.com/file/d/1uAue7LhtvtddKM7JCW-1t1UPfrFhHSkx/view?usp=drivesdk') no-repeat center center/cover; height:450px; display:flex; align-items:center; justify-content:center; flex-direction:column; text-align:center; color:#00ffff; position:relative;">
+<section id="hero" style="background: url('https://drive.google.com/uc?export=view&id=1uAue7LhtvtddKM7JCW-1t1UPfrFhHSkx') no-repeat center center/cover; height:450px; display:flex; align-items:center; justify-content:center; flex-direction:column; text-align:center; color:#00ffff; position:relative;">
   <div style="background: rgba(0,0,0,0.5); width:100%; height:100%; position:absolute; top:0; left:0;"></div>
   <div style="position:relative; z-index:1;">
     <h1 style="font-size:50px; text-shadow: 2px 2px 10px #000;">PK LINES ESPORTS</h1>
@@ -90,7 +107,7 @@ input{
   <div class="badge">ENTRY FREE</div>
   <div class="badge">PRIZE POOL 50,000 PKR</div>
 
-  <form action="https://formsubmit.co/Talhaagned4399@gmail.com" method="POST" enctype="multipart/form-data">
+  <form action="https://formsubmit.co/Talhaahmed4399@gmail.com" method="POST" enctype="multipart/form-data">
     <input type="hidden" name="_captcha" value="false">
     <input type="text" name="Team Name" placeholder="Team Name" required>
     <input type="text" name="Leader Name" placeholder="Leader Name" required>
@@ -108,11 +125,58 @@ input{
   <ul>
     <li>Entry is FREE.</li>
     <li>No cheating, hacks, or mods allowed.</li>
-    <li>All matches will follow PUBG Mobile official rules.</li>
+    <li>All matches follow PUBG Mobile official rules.</li>
     <li>Room ID and timing will be shared before each match.</li>
     <li>Screenshot of results required for confirmation.</li>
     <li>Respect all players and maintain fair play.</li>
   </ul>
+</div>
+
+<!-- WINNERS SECTION -->
+<div class="winners">
+  <h2>PREVIOUS TOURNAMENT WINNERS</h2>
+  <table>
+    <tr>
+      <th>Rank</th>
+      <th>Team Name</th>
+      <th>Points</th>
+    </tr>
+    <tr><td>1</td><td>Alpha Squad</td><td>150</td></tr>
+    <tr><td>2</td><td>Dragon Force</td><td>120</td></tr>
+    <tr><td>3</td><td>Shadow Hunters</td><td>100</td></tr>
+  </table>
+</div>
+
+<!-- LEADERBOARD -->
+<div class="leaderboard">
+  <h2>LEADERBOARD</h2>
+  <table>
+    <tr>
+      <th>Player</th>
+      <th>Team</th>
+      <th>Kills</th>
+      <th>Points</th>
+    </tr>
+    <tr><td>Player1</td><td>Alpha Squad</td><td>25</td><td>150</td></tr>
+    <tr><td>Player2</td><td>Dragon Force</td><td>18</td><td>120</td></tr>
+    <tr><td>Player3</td><td>Shadow Hunters</td><td>15</td><td>100</td></tr>
+  </table>
+</div>
+
+<!-- PLAYERS LIST -->
+<div class="players">
+  <h2>REGISTERED PLAYERS</h2>
+  <table>
+    <tr>
+      <th>Team</th>
+      <th>Leader</th>
+      <th>PUBG ID</th>
+      <th>WhatsApp</th>
+    </tr>
+    <tr><td>Alpha Squad</td><td>Ali</td><td>Ali123</td><td>03001234567</td></tr>
+    <tr><td>Dragon Force</td><td>Ahmed</td><td>Dragon007</td><td>03009876543</td></tr>
+    <tr><td>Shadow Hunters</td><td>Sara</td><td>ShadowX</td><td>03111223344</td></tr>
+  </table>
 </div>
 
 <div class="footer">
