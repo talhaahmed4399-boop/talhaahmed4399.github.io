@@ -29,6 +29,17 @@ th{ background:#00ffff; color:black;}
 #hero button { animation: pulse 2s infinite; }
 @keyframes pulse { 0% { box-shadow:0 0 10px #00ffff; } 50% { box-shadow:0 0 20px #00ffff; } 100% { box-shadow:0 0 10px #00ffff; } }
 .hero-slide { display:none; position:absolute; top:0; left:0; width:100%; height:100%; background-size:cover; background-position:center; }
+
+/* UPCOMING EVENTS CARD STYLES */
+.event-cards { display:flex; flex-wrap:wrap; gap:15px; justify-content:center; }
+.event-card { background:#11182b; border:1px solid #00ffff; border-radius:12px; padding:20px; width:250px; text-align:center; box-shadow:0 0 15px #00ffff50; transition:0.3s; }
+.event-card:hover { transform: scale(1.05); box-shadow:0 0 25px #00ffff; }
+
+/* SUCCESS MODAL */
+#successModal { display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.8); z-index:9999; display:flex; align-items:center; justify-content:center; }
+#successModal .modal-content { background:#11182b; padding:30px; border-radius:15px; text-align:center; box-shadow:0 0 20px #00ffff; }
+#successModal .modal-content h2 { color:#00ffff; margin-bottom:15px; }
+#successModal .modal-content button { margin-top:10px; }
 </style>
 </head>
 <body>
@@ -85,7 +96,7 @@ showSlides();
   <h2>PUBG MOBILE TOURNAMENT</h2>
   <div class="badge">ENTRY FREE</div>
   <div class="badge">PRIZE POOL 50,000 PKR</div>
-  <form action="https://formsubmit.co/Talhaahmed4399@gmail.com" method="POST" enctype="multipart/form-data">
+  <form id="registrationForm" action="https://formsubmit.co/Talhaahmed4399@gmail.com" method="POST" enctype="multipart/form-data">
     <input type="hidden" name="_captcha" value="false">
     <input type="text" name="Team Name" placeholder="Team Name" required>
     <input type="text" name="Leader Name" placeholder="Leader Name" required>
@@ -124,13 +135,25 @@ showSlides();
   <a href="https://chat.whatsapp.com/JLhkyWtPQbAE06StUBN8m2" target="_blank"><button>JOIN NOW</button></a>
 </div>
 
-<!-- UPCOMING EVENTS -->
-<div class="events" data-aos="fade-left">
+<!-- UPCOMING EVENTS SECTION -->
+<div class="events" data-aos="fade-up">
   <h2>UPCOMING TOURNAMENTS</h2>
-  <ul>
-    <li>Mini League Season 5 – 25 Feb 2026 – Entry Free – Prize 50,000 PKR</li>
-    <li>Battle Royale Cup – 10 Mar 2026 – Entry Free – Prize 75,000 PKR</li>
-  </ul>
+  <div class="event-cards">
+    <div class="event-card">
+      <h3>Mini League Season 5</h3>
+      <p>Date: 25 Feb 2026</p>
+      <p>Entry: Free</p>
+      <p>Prize: 50,000 PKR</p>
+      <button onclick="alert('Reminder Set!')">SET REMINDER</button>
+    </div>
+    <div class="event-card">
+      <h3>Battle Royale Cup</h3>
+      <p>Date: 10 Mar 2026</p>
+      <p>Entry: Free</p>
+      <p>Prize: 75,000 PKR</p>
+      <button onclick="alert('Reminder Set!')">SET REMINDER</button>
+    </div>
+  </div>
 </div>
 
 <!-- PAST EVENTS -->
@@ -149,7 +172,6 @@ showSlides();
     <tr>
       <th>Team</th><th>Leader</th><th>PUBG ID</th><th>WhatsApp</th><th>Points</th><th>Kills</th>
     </tr>
-    <!-- Google Sheet data placeholder -->
   </table>
 </div>
 
@@ -158,7 +180,6 @@ showSlides();
   <h2>TOP 3 WINNERS</h2>
   <table id="winnersTable">
     <tr><th>Rank</th><th>Team Name</th><th>Points</th></tr>
-    <!-- Google Sheet winners placeholder -->
   </table>
 </div>
 
@@ -170,6 +191,15 @@ showSlides();
 </div>
 
 <div class="footer" data-aos="fade-up">Powered by PK LIONS ESPORTS</div>
+
+<!-- SUCCESS MODAL -->
+<div id="successModal">
+  <div class="modal-content">
+    <h2>🎉 Registration Successful!</h2>
+    <p>You have successfully registered for the tournament.</p>
+    <button onclick="closeModal()">OK</button>
+  </div>
+</div>
 
 <!-- AOS Animation Library -->
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
@@ -204,6 +234,18 @@ function fetchSheetData(){
 }
 fetchSheetData();
 setInterval(fetchSheetData,30000);
+</script>
+
+<!-- REGISTRATION SUCCESS SCRIPT -->
+<script>
+const form = document.getElementById('registrationForm');
+form.addEventListener('submit', function(e){
+  e.preventDefault(); // prevent default submission for demo
+  document.getElementById('successModal').style.display = 'flex';
+  // To actually submit to Formsubmit, you can uncomment:
+  // form.submit();
+});
+function closeModal(){ document.getElementById('successModal').style.display = 'none'; }
 </script>
 
 </body>
