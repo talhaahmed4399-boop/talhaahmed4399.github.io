@@ -1,251 +1,162 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PK LIONS ESPORTS</title>
-<!-- AOS for scroll animations -->
-<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<title>eSports Tournament System</title>
+
 <style>
-/* ===== GENERAL STYLES ===== */
-body { margin:0; font-family: Arial, Helvetica, sans-serif; background:#0b0f1a; color:white; }
-a {text-decoration:none;}
-button,input{ border:none; border-radius:5px; padding:12px; margin:5px 0; font-size:15px; transition:0.3s;}
-button{ background:#00ffff; color:black; font-weight:bold; cursor:pointer; box-shadow: 0 0 10px #00ffff;}
-button:hover{ background:white; color:black; box-shadow: 0 0 20px #00ffff;}
-input{ width:90%; background:#0b0f1a; color:white; border:1px solid #00ffff;}
-.container{ max-width:450px; margin:30px auto; background:#11182b; padding:25px; border-radius:12px; box-shadow:0 0 15px #00ffff50;}
-.badge{ background:#00ffff; color:black; padding:6px 12px; border-radius:5px; display:inline-block; margin:5px;}
-.footer{ text-align:center; margin-top:20px; font-size:13px; color:#aaa;}
-.rules, .winners, .leaderboard, .players, .events, .sponsors, .youtube, .community { background:#11182b; padding:20px; border-radius:10px; margin:20px auto; max-width:900px;}
-.rules h2, .winners h2, .leaderboard h2, .players h2, .events h2, .sponsors h2, .youtube h2, .community h2 { color:#00ffff;}
-table{ width:100%; border-collapse: collapse; margin-top:10px;}
-table, th, td{ border:1px solid #00ffff;}
-th, td{ padding:8px; text-align:center;}
-th{ background:#00ffff; color:black;}
-/* HERO ANIMATIONS */
-#hero h1 { font-size:50px; color:#00ffff; text-shadow: 0 0 15px #00ffff; animation: glow 2s ease-in-out infinite alternate; }
-@keyframes glow { from { text-shadow: 0 0 10px #00ffff; } to { text-shadow: 0 0 25px #00ffff; } }
-#hero button { animation: pulse 2s infinite; }
-@keyframes pulse { 0% { box-shadow:0 0 10px #00ffff; } 50% { box-shadow:0 0 20px #00ffff; } 100% { box-shadow:0 0 10px #00ffff; } }
-.hero-slide { display:none; position:absolute; top:0; left:0; width:100%; height:100%; background-size:cover; background-position:center; }
-
-/* UPCOMING EVENTS CARD STYLES */
-.event-cards { display:flex; flex-wrap:wrap; gap:15px; justify-content:center; }
-.event-card { background:#11182b; border:1px solid #00ffff; border-radius:12px; padding:20px; width:250px; text-align:center; box-shadow:0 0 15px #00ffff50; transition:0.3s; }
-.event-card:hover { transform: scale(1.05); box-shadow:0 0 25px #00ffff; }
-
-/* SUCCESS MODAL */
-#successModal { display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.8); z-index:9999; display:flex; align-items:center; justify-content:center; }
-#successModal .modal-content { background:#11182b; padding:30px; border-radius:15px; text-align:center; box-shadow:0 0 20px #00ffff; }
-#successModal .modal-content h2 { color:#00ffff; margin-bottom:15px; }
-#successModal .modal-content button { margin-top:10px; }
+body{margin:0;font-family:Arial;background:#0b0f1a;color:white}
+section{padding:20px}
+input,button{padding:10px;margin:5px;width:90%}
+button{background:#00ffcc;border:none;color:black;font-weight:bold}
+.card{background:#141a2a;padding:15px;border-radius:10px;margin:10px}
+.hidden{display:none}
 </style>
 </head>
+
 <body>
 
-<!-- HERO SECTION WITH ROTATING SLIDES -->
-<section id="hero" style="height:500px; display:flex; align-items:center; justify-content:center; flex-direction:column; text-align:center; color:#00ffff; position:relative; overflow:hidden;">
-  <div style="background: rgba(0,0,0,0.5); width:100%; height:100%; position:absolute; top:0; left:0;"></div>
-  <!-- Slides -->
-  <div class="hero-slide" style="background:url('https://drive.google.com/uc?export=view&id=1uAue7LhtvtddKM7JCW-1t1UPfrFhHSkx') no-repeat center center/cover;"></div>
-  <div class="hero-slide" style="background:url('https://picsum.photos/1200/500?grayscale') no-repeat center center/cover;"></div>
-  <div style="position:relative; z-index:1;">
-    <h1>PK LIONS ESPORTS</h1>
-    <p>Where Warriors Rise</p>
-    <div id="countdown" style="font-size:20px; margin-top:10px;"></div>
-    <div style="margin-top:20px;">
-      <a href="#register"><button>REGISTER NOW</button></a>
-      <a href="https://wa.me/923701561639"><button>JOIN WHATSAPP</button></a>
-    </div>
-  </div>
+<section id="home">
+
+<h2>🏆 PUBG Mobile Tournament</h2>
+
+<div class="card">
+Entry Fee: 150 PKR<br>
+Prize Pool: 3000 PKR
+</div>
+
+<button onclick="show('register')">Register Team</button>
+<button onclick="show('adminLogin')">Admin Panel</button>
+<button onclick="show('casterLogin')">Caster Panel</button>
+
+<a href="https://chat.whatsapp.com/JLhkyWtPQbAE06StUBN8m2">
+<button>Join WhatsApp Community</button></a>
+
 </section>
 
-<!-- COUNTDOWN SCRIPT -->
-<script>
-const countdownDate = new Date("Feb 20, 2026 22:00:00").getTime();
-const countdownElem = document.getElementById("countdown");
-setInterval(function() {
-  const now = new Date().getTime();
-  const distance = countdownDate - now;
-  if(distance < 0){ countdownElem.innerHTML = "Registration Closed!"; return; }
-  const days = Math.floor(distance/(1000*60*60*24));
-  const hours = Math.floor((distance%(1000*60*60*24))/(1000*60*60));
-  const minutes = Math.floor((distance%(1000*60*60))/(1000*60));
-  const seconds = Math.floor((distance%(1000*60))/1000);
-  countdownElem.innerHTML = Registration ends in: ${days}d ${hours}h ${minutes}m ${seconds}s;
-}, 1000);
-</script>
+<!---------------- REGISTER ------------->
 
-<!-- HERO SLIDES SCRIPT -->
+<section id="register" class="hidden">
+
+<h3>Team Registration</h3>
+
+<input id="team" placeholder="Team Name">
+<input id="leader" placeholder="Leader Name">
+<input id="phone" placeholder="WhatsApp Number">
+
+<button onclick="submitForm()">Submit</button>
+
+</section>
+
+<section id="thanks" class="hidden">
+<h2>✅ Congratulations!</h2>
+<p>Your registration has been submitted.<br>
+Please wait — our team will contact you soon.</p>
+<button onclick="show('home')">Home</button>
+</section>
+
+<!---------------- ADMIN ------------->
+
+<section id="adminLogin" class="hidden">
+<h3>Admin Login</h3>
+<input id="adminUser" placeholder="Username">
+<input id="adminPass" type="password" placeholder="Password">
+<button onclick="adminLogin()">Login</button>
+</section>
+
+<section id="adminPanel" class="hidden">
+<h2>Admin Panel</h2>
+
+<div class="card">
+<h4>Donations</h4>
+JazzCash: YOUR NUMBER<br>
+EasyPaisa: YOUR NUMBER
+</div>
+
+<textarea placeholder="Announcement"></textarea>
+<button>Send</button>
+
+<button onclick="show('home')">Logout</button>
+</section>
+
+<!---------------- CASTER ------------->
+
+<section id="casterLogin" class="hidden">
+<h3>Caster Login</h3>
+<input id="casterUser" placeholder="Username">
+<input id="casterPass" type="password" placeholder="Password">
+<button onclick="casterLogin()">Login</button>
+</section>
+
+<section id="casterPanel" class="hidden">
+<h2>🎤 Caster Panel</h2>
+
+<textarea placeholder="Match Notes"></textarea>
+<button>Save</button>
+
+<textarea placeholder="Live Commentary"></textarea>
+<button>Post</button>
+
+<button onclick="show('home')">Logout</button>
+</section>
+
+<!---------------- CHAT ------------->
+
+<section>
+<h3>Community Chat</h3>
+<input placeholder="Message">
+<button>Send</button>
+</section>
+
+<!---------------- LEADERBOARD ------------->
+
+<section>
+<h3>Leaderboard</h3>
+<div class="card">Team Alpha – 20 pts</div>
+<div class="card">Team Bravo – 15 pts</div>
+</section>
+
+<!---------------- GAME REQUEST ------------->
+
+<section>
+<h3>Request Game</h3>
+<input placeholder="Game Name">
+<button>Request</button>
+</section>
+
 <script>
-let slideIndex = 0;
-function showSlides(){
-  let slides = document.getElementsByClassName("hero-slide");
-  for(let i=0;i<slides.length;i++){slides[i].style.display="none";}
-  slideIndex++;
-  if(slideIndex>slides.length){slideIndex=1;}
-  slides[slideIndex-1].style.display="block";
-  setTimeout(showSlides,5000);
+
+function show(id){
+document.querySelectorAll('section').forEach(s=>s.classList.add('hidden'));
+document.getElementById(id).classList.remove('hidden');
 }
-showSlides();
-</script>
 
-<!-- TOURNAMENT REGISTRATION -->
-<div class="container" id="register" data-aos="fade-up">
-  <h2>PUBG MOBILE TOURNAMENT</h2>
-  <div class="badge">ENTRY FREE</div>
-  <div class="badge">PRIZE POOL 50,000 PKR</div>
-  <form id="registrationForm" action="https://formsubmit.co/Talhaahmed4399@gmail.com" method="POST" enctype="multipart/form-data">
-    <input type="hidden" name="_captcha" value="false">
-    <input type="text" name="Team Name" placeholder="Team Name" required>
-    <input type="text" name="Leader Name" placeholder="Leader Name" required>
-    <input type="text" name="PUBG ID" placeholder="PUBG ID" required>
-    <input type="tel" name="WhatsApp" placeholder="WhatsApp Number" required>
-    <label>Upload Screenshot (optional)</label><br>
-    <input type="file" name="Screenshot"><br>
-    <button type="submit">REGISTER NOW</button>
-  </form>
-</div>
-
-<!-- TOURNAMENT RULES -->
-<div class="rules" data-aos="fade-right">
-  <h2>TOURNAMENT RULES</h2>
-  <ul>
-    <li>Entry is FREE.</li>
-    <li>No cheating, hacks, or mods allowed.</li>
-    <li>All matches follow PUBG Mobile official rules.</li>
-    <li>Room ID and timing shared before each match.</li>
-    <li>Screenshot required for confirmation.</li>
-    <li>Respect all players and maintain fair play.</li>
-  </ul>
-</div>
-
-<!-- YOUTUBE HIGHLIGHT SECTION -->
-<div class="youtube" data-aos="fade-left">
-  <h2>YOUTUBE HIGHLIGHT</h2>
-  <p>Watch our live events and highlights on YouTube:</p>
-  <a href="https://www.youtube.com/live/jmbTUSMhR28?si=kVXNFl5OIG-0ySYa" target="_blank"><button>WATCH LIVE</button></a>
-</div>
-
-<!-- JOIN COMMUNITY SECTION -->
-<div class="community" data-aos="fade-up">
-  <h2>JOIN OUR COMMUNITY</h2>
-  <p>Be part of our active WhatsApp community:</p>
-  <a href="https://chat.whatsapp.com/JLhkyWtPQbAE06StUBN8m2" target="_blank"><button>JOIN NOW</button></a>
-</div>
-
-<!-- UPCOMING EVENTS SECTION -->
-<div class="events" data-aos="fade-up">
-  <h2>UPCOMING TOURNAMENTS</h2>
-  <div class="event-cards">
-    <div class="event-card">
-      <h3>Mini League Season 5</h3>
-      <p>Date: 25 Feb 2026</p>
-      <p>Entry: Free</p>
-      <p>Prize: 50,000 PKR</p>
-      <button onclick="alert('Reminder Set!')">SET REMINDER</button>
-    </div>
-    <div class="event-card">
-      <h3>Battle Royale Cup</h3>
-      <p>Date: 10 Mar 2026</p>
-      <p>Entry: Free</p>
-      <p>Prize: 75,000 PKR</p>
-      <button onclick="alert('Reminder Set!')">SET REMINDER</button>
-    </div>
-  </div>
-</div>
-
-<!-- PAST EVENTS -->
-<div class="events" data-aos="fade-right">
-  <h2>PAST TOURNAMENTS</h2>
-  <ul>
-    <li>Mini League Season 4 – Winner: Alpha Squad</li>
-    <li>Battle Royale Cup – Winner: Dragon Force</li>
-  </ul>
-</div>
-
-<!-- REGISTERED PLAYERS & LEADERBOARD -->
-<div class="players" data-aos="fade-up">
-  <h2>REGISTERED PLAYERS & LEADERBOARD</h2>
-  <table id="playerTable">
-    <tr>
-      <th>Team</th><th>Leader</th><th>PUBG ID</th><th>WhatsApp</th><th>Points</th><th>Kills</th>
-    </tr>
-  </table>
-</div>
-
-<!-- WINNERS -->
-<div class="winners" data-aos="fade-left">
-  <h2>TOP 3 WINNERS</h2>
-  <table id="winnersTable">
-    <tr><th>Rank</th><th>Team Name</th><th>Points</th></tr>
-  </table>
-</div>
-
-<!-- SPONSORS / DONATIONS -->
-<div class="sponsors" data-aos="fade-up">
-  <h2>SPONSORS & SUPPORT</h2>
-  <p>Supported by: GamerZone, PK eSports Shop</p>
-  <button onclick="window.open('https://www.paypal.com/donate','_blank')">DONATE</button>
-</div>
-
-<div class="footer" data-aos="fade-up">Powered by PK LIONS ESPORTS</div>
-
-<!-- SUCCESS MODAL -->
-<div id="successModal">
-  <div class="modal-content">
-    <h2>🎉 Registration Successful!</h2>
-    <p>You have successfully registered for the tournament.</p>
-    <button onclick="closeModal()">OK</button>
-  </div>
-</div>
-
-<!-- AOS Animation Library -->
-<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-<script>AOS.init({ duration:1000 });</script>
-
-<!-- GOOGLE SHEET LIVE DATA SCRIPT -->
-<script>
-const SHEET_ID = "YOUR_SHEET_ID"; // Replace with your Google Sheet ID
-const RANGE = "Form Responses 1";
-function fetchSheetData(){
-  const url=https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?sheet=${RANGE}&tq=;
-  fetch(url).then(res=>res.text()).then(rep=>{
-    const jsonData = JSON.parse(rep.substring(47).slice(0,-2));
-    const rows = jsonData.table.rows;
-    const table = document.getElementById("playerTable");
-    const winners = document.getElementById("winnersTable");
-    table.innerHTML = <tr><th>Team</th><th>Leader</th><th>PUBG ID</th><th>WhatsApp</th><th>Points</th><th>Kills</th></tr>;
-    winners.innerHTML = <tr><th>Rank</th><th>Team Name</th><th>Points</th></tr>;
-    rows.forEach((row,index)=>{
-      const team=row.c[0]?.v||"";
-      const leader=row.c[1]?.v||"";
-      const pubg=row.c[2]?.v||"";
-      const whatsapp=row.c[3]?.v||"";
-      const points=row.c[4]?.v||Math.floor(Math.random()*150);
-      const kills=row.c[5]?.v||Math.floor(Math.random()*30);
-      const tr=document.createElement("tr");
-      tr.innerHTML=<td>${team}</td><td>${leader}</td><td>${pubg}</td><td>${whatsapp}</td><td>${points}</td><td>${kills}</td>;
-      table.appendChild(tr);
-      if(index<3){const wtr=document.createElement("tr"); wtr.innerHTML=<td>${index+1}</td><td>${team}</td><td>${points}</td>; winners.appendChild(wtr);}
-    });
-  });
+function adminLogin(){
+if(adminUser.value=="admin" && adminPass.value=="1234"){
+show('adminPanel');
+}else alert("Wrong Admin Login");
 }
-fetchSheetData();
-setInterval(fetchSheetData,30000);
-</script>
 
-<!-- REGISTRATION SUCCESS SCRIPT -->
-<script>
-const form = document.getElementById('registrationForm');
-form.addEventListener('submit', function(e){
-  e.preventDefault(); // prevent default submission for demo
-  document.getElementById('successModal').style.display = 'flex';
-  // To actually submit to Formsubmit, you can uncomment:
-  // form.submit();
+function casterLogin(){
+if(casterUser.value=="caster" && casterPass.value=="1234"){
+show('casterPanel');
+}else alert("Wrong Caster Login");
+}
+
+function submitForm(){
+
+fetch("YOUR_GOOGLE_SCRIPT_URL",{
+method:"POST",
+body:JSON.stringify({
+team:team.value,
+leader:leader.value,
+phone:phone.value
+})
 });
-function closeModal(){ document.getElementById('successModal').style.display = 'none'; }
+
+show('thanks');
+}
+
 </script>
 
 </body>
