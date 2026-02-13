@@ -1,8 +1,12 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PK Lines eSports Mega Tournament</title><!-- AOS for scroll animations --><link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet"><style>
+<title>PK LIONS ESPORTS</title>
+<!-- AOS for scroll animations -->
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<style>
 /* ===== GENERAL STYLES ===== */
 body { margin:0; font-family: Arial, Helvetica, sans-serif; background:#0b0f1a; color:white; }
 a {text-decoration:none;}
@@ -13,8 +17,8 @@ input{ width:90%; background:#0b0f1a; color:white; border:1px solid #00ffff;}
 .container{ max-width:450px; margin:30px auto; background:#11182b; padding:25px; border-radius:12px; box-shadow:0 0 15px #00ffff50;}
 .badge{ background:#00ffff; color:black; padding:6px 12px; border-radius:5px; display:inline-block; margin:5px;}
 .footer{ text-align:center; margin-top:20px; font-size:13px; color:#aaa;}
-.rules, .winners, .leaderboard, .players, .events, .sponsors { background:#11182b; padding:20px; border-radius:10px; margin:20px auto; max-width:900px;}
-.rules h2, .winners h2, .leaderboard h2, .players h2, .events h2, .sponsors h2 { color:#00ffff;}
+.rules, .winners, .leaderboard, .players, .events, .sponsors, .youtube, .community { background:#11182b; padding:20px; border-radius:10px; margin:20px auto; max-width:900px;}
+.rules h2, .winners h2, .leaderboard h2, .players h2, .events h2, .sponsors h2, .youtube h2, .community h2 { color:#00ffff;}
 table{ width:100%; border-collapse: collapse; margin-top:10px;}
 table, th, td{ border:1px solid #00ffff;}
 th, td{ padding:8px; text-align:center;}
@@ -25,14 +29,18 @@ th{ background:#00ffff; color:black;}
 #hero button { animation: pulse 2s infinite; }
 @keyframes pulse { 0% { box-shadow:0 0 10px #00ffff; } 50% { box-shadow:0 0 20px #00ffff; } 100% { box-shadow:0 0 10px #00ffff; } }
 .hero-slide { display:none; position:absolute; top:0; left:0; width:100%; height:100%; background-size:cover; background-position:center; }
-</style></head>
-<body><!-- HERO SECTION WITH ROTATING SLIDES --><section id="hero" style="height:500px; display:flex; align-items:center; justify-content:center; flex-direction:column; text-align:center; color:#00ffff; position:relative; overflow:hidden;">
+</style>
+</head>
+<body>
+
+<!-- HERO SECTION WITH ROTATING SLIDES -->
+<section id="hero" style="height:500px; display:flex; align-items:center; justify-content:center; flex-direction:column; text-align:center; color:#00ffff; position:relative; overflow:hidden;">
   <div style="background: rgba(0,0,0,0.5); width:100%; height:100%; position:absolute; top:0; left:0;"></div>
   <!-- Slides -->
   <div class="hero-slide" style="background:url('https://drive.google.com/uc?export=view&id=1uAue7LhtvtddKM7JCW-1t1UPfrFhHSkx') no-repeat center center/cover;"></div>
   <div class="hero-slide" style="background:url('https://picsum.photos/1200/500?grayscale') no-repeat center center/cover;"></div>
   <div style="position:relative; z-index:1;">
-    <h1>PK LINES ESPORTS</h1>
+    <h1>PK LIONS ESPORTS</h1>
     <p>Where Warriors Rise</p>
     <div id="countdown" style="font-size:20px; margin-top:10px;"></div>
     <div style="margin-top:20px;">
@@ -40,7 +48,10 @@ th{ background:#00ffff; color:black;}
       <a href="https://wa.me/923701561639"><button>JOIN WHATSAPP</button></a>
     </div>
   </div>
-</section><!-- COUNTDOWN SCRIPT --><script>
+</section>
+
+<!-- COUNTDOWN SCRIPT -->
+<script>
 const countdownDate = new Date("Feb 20, 2026 22:00:00").getTime();
 const countdownElem = document.getElementById("countdown");
 setInterval(function() {
@@ -53,7 +64,10 @@ setInterval(function() {
   const seconds = Math.floor((distance%(1000*60))/1000);
   countdownElem.innerHTML = Registration ends in: ${days}d ${hours}h ${minutes}m ${seconds}s;
 }, 1000);
-</script><!-- HERO SLIDES SCRIPT --><script>
+</script>
+
+<!-- HERO SLIDES SCRIPT -->
+<script>
 let slideIndex = 0;
 function showSlides(){
   let slides = document.getElementsByClassName("hero-slide");
@@ -64,7 +78,10 @@ function showSlides(){
   setTimeout(showSlides,5000);
 }
 showSlides();
-</script><!-- TOURNAMENT REGISTRATION --><div class="container" id="register" data-aos="fade-up">
+</script>
+
+<!-- TOURNAMENT REGISTRATION -->
+<div class="container" id="register" data-aos="fade-up">
   <h2>PUBG MOBILE TOURNAMENT</h2>
   <div class="badge">ENTRY FREE</div>
   <div class="badge">PRIZE POOL 50,000 PKR</div>
@@ -78,7 +95,10 @@ showSlides();
     <input type="file" name="Screenshot"><br>
     <button type="submit">REGISTER NOW</button>
   </form>
-</div><!-- TOURNAMENT RULES --><div class="rules" data-aos="fade-right">
+</div>
+
+<!-- TOURNAMENT RULES -->
+<div class="rules" data-aos="fade-right">
   <h2>TOURNAMENT RULES</h2>
   <ul>
     <li>Entry is FREE.</li>
@@ -88,19 +108,42 @@ showSlides();
     <li>Screenshot required for confirmation.</li>
     <li>Respect all players and maintain fair play.</li>
   </ul>
-</div><!-- UPCOMING EVENTS --><div class="events" data-aos="fade-left">
+</div>
+
+<!-- YOUTUBE HIGHLIGHT SECTION -->
+<div class="youtube" data-aos="fade-left">
+  <h2>YOUTUBE HIGHLIGHT</h2>
+  <p>Watch our live events and highlights on YouTube:</p>
+  <a href="https://www.youtube.com/live/jmbTUSMhR28?si=kVXNFl5OIG-0ySYa" target="_blank"><button>WATCH LIVE</button></a>
+</div>
+
+<!-- JOIN COMMUNITY SECTION -->
+<div class="community" data-aos="fade-up">
+  <h2>JOIN OUR COMMUNITY</h2>
+  <p>Be part of our active WhatsApp community:</p>
+  <a href="https://chat.whatsapp.com/JLhkyWtPQbAE06StUBN8m2" target="_blank"><button>JOIN NOW</button></a>
+</div>
+
+<!-- UPCOMING EVENTS -->
+<div class="events" data-aos="fade-left">
   <h2>UPCOMING TOURNAMENTS</h2>
   <ul>
     <li>Mini League Season 5 – 25 Feb 2026 – Entry Free – Prize 50,000 PKR</li>
     <li>Battle Royale Cup – 10 Mar 2026 – Entry Free – Prize 75,000 PKR</li>
   </ul>
-</div><!-- PAST EVENTS --><div class="events" data-aos="fade-right">
+</div>
+
+<!-- PAST EVENTS -->
+<div class="events" data-aos="fade-right">
   <h2>PAST TOURNAMENTS</h2>
   <ul>
     <li>Mini League Season 4 – Winner: Alpha Squad</li>
     <li>Battle Royale Cup – Winner: Dragon Force</li>
   </ul>
-</div><!-- LEADERBOARD & PLAYERS --><div class="players" data-aos="fade-up">
+</div>
+
+<!-- REGISTERED PLAYERS & LEADERBOARD -->
+<div class="players" data-aos="fade-up">
   <h2>REGISTERED PLAYERS & LEADERBOARD</h2>
   <table id="playerTable">
     <tr>
@@ -108,17 +151,32 @@ showSlides();
     </tr>
     <!-- Google Sheet data placeholder -->
   </table>
-</div><!-- WINNERS --><div class="winners" data-aos="fade-left">
+</div>
+
+<!-- WINNERS -->
+<div class="winners" data-aos="fade-left">
   <h2>TOP 3 WINNERS</h2>
   <table id="winnersTable">
     <tr><th>Rank</th><th>Team Name</th><th>Points</th></tr>
     <!-- Google Sheet winners placeholder -->
   </table>
-</div><!-- SPONSORS / DONATIONS --><div class="sponsors" data-aos="fade-up">
+</div>
+
+<!-- SPONSORS / DONATIONS -->
+<div class="sponsors" data-aos="fade-up">
   <h2>SPONSORS & SUPPORT</h2>
   <p>Supported by: GamerZone, PK eSports Shop</p>
   <button onclick="window.open('https://www.paypal.com/donate','_blank')">DONATE</button>
-</div><div class="footer" data-aos="fade-up">Powered by PK Lines eSports</div><!-- AOS Animation Library --><script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script><script>AOS.init({ duration:1000 });</script><!-- GOOGLE SHEET LIVE DATA SCRIPT PLACEHOLDER --><script>
+</div>
+
+<div class="footer" data-aos="fade-up">Powered by PK LIONS ESPORTS</div>
+
+<!-- AOS Animation Library -->
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>AOS.init({ duration:1000 });</script>
+
+<!-- GOOGLE SHEET LIVE DATA SCRIPT -->
+<script>
 const SHEET_ID = "YOUR_SHEET_ID"; // Replace with your Google Sheet ID
 const RANGE = "Form Responses 1";
 function fetchSheetData(){
@@ -146,5 +204,7 @@ function fetchSheetData(){
 }
 fetchSheetData();
 setInterval(fetchSheetData,30000);
-</script></body>
+</script>
+
+</body>
 </html>
