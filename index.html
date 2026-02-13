@@ -2,94 +2,149 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PK L-I-O-N-S Ultimate eSports Hub</title>
-<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<style>
-body{margin:0;font-family:Arial,sans-serif;background:#0b0f1a;color:white;overflow-x:hidden;}
-a{text-decoration:none;color:#0ff;}
-button,input{border:none;border-radius:5px;padding:12px;margin:5px 0;font-size:15px;transition:0.3s;}
-button{background:#0ff;color:black;font-weight:bold;cursor:pointer;box-shadow:0 0 10px #0ff;}
-button:hover{background:white;color:black;box-shadow:0 0 20px #0ff;}
-input{width:90%;background:#0b0f1a;color:white;border:1px solid #0ff;}
-.container{max-width:450px;margin:30px auto;background:#11182b;padding:25px;border-radius:12px;box-shadow:0 0 15px #0ff50;}
-.badge{background:#0ff;color:black;padding:6px 12px;border-radius:5px;display:inline-block;margin:5px;}
-.footer{text-align:center;margin-top:20px;font-size:13px;color:#aaa;}
-.section{background:#11182b;padding:20px;border-radius:10px;margin:20px auto;max-width:950px;}
-.section h2{color:#0ff;text-shadow:0 0 10px #0ff;}
-table{width:100%;border-collapse: collapse;margin-top:10px;}
-table, th, td{border:1px solid #0ff;}
-th, td{padding:8px;text-align:center;}
-th{background:#0ff;color:black;}
-#hero{height:600px;display:flex;align-items:center;justify-content:center;flex-direction:column;text-align:center;color:#0ff;position:relative;overflow:hidden;}
-#hero h1{font-size:60px;color:#0ff;text-shadow:0 0 20px #0ff,0 0 40px #0ff,0 0 60px #0ff;animation:glow 2s ease-in-out infinite alternate;}
-@keyframes glow{from{text-shadow:0 0 15px #0ff,0 0 30px #0ff;}to{text-shadow:0 0 35px #0ff,0 0 70px #0ff;}}
-#hero button{animation:pulse 2s infinite;}
-@keyframes pulse{0%{box-shadow:0 0 10px #0ff;}50%{box-shadow:0 0 25px #0ff;}100%{box-shadow:0 0 10px #0ff;}}
-.hero-slide{display:none;position:absolute;top:0;left:0;width:100%;height:100%;background-size:cover;background-position:center;}
-.confetti-piece{width:10px;height:10px;position:absolute;top:0;left:50%;opacity:0.8;animation:fall 5s linear infinite;}
-@keyframes fall{0%{transform:translateY(0) rotate(0deg);}100%{transform:translateY(700px) rotate(360deg);opacity:0;}}
-.card{background:#0b0f1a;padding:15px;margin:10px;border-radius:8px;display:inline-block;width:250px;text-align:center;box-shadow:0 0 15px #0ff;transition:0.3s;}
-.card:hover{transform:scale(1.05);box-shadow:0 0 30px #0ff;}
-.player-card{background:#11182b;padding:10px;margin:10px;border-radius:8px;display:inline-block;width:180px;text-align:center;box-shadow:0 0 10px #0ff;transition:0.3s;}
-.player-card:hover{transform:scale(1.05);box-shadow:0 0 25px #0ff;}
-#thankyou-message{display:none;background:#0ff;color:black;padding:20px;margin:20px auto;text-align:center;border-radius:10px;box-shadow:0 0 20px #0ff;max-width:500px;}
-</style>
-</head>
-<body><section id="hero">
+<title>PK Lines eSports Mega Tournament</title><!-- AOS for scroll animations --><link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet"><style>
+/* ===== GENERAL STYLES ===== */
+body { margin:0; font-family: Arial, Helvetica, sans-serif; background:#0b0f1a; color:white; }
+a {text-decoration:none;}
+button,input{ border:none; border-radius:5px; padding:12px; margin:5px 0; font-size:15px; transition:0.3s;}
+button{ background:#00ffff; color:black; font-weight:bold; cursor:pointer; box-shadow: 0 0 10px #00ffff;}
+button:hover{ background:white; color:black; box-shadow: 0 0 20px #00ffff;}
+input{ width:90%; background:#0b0f1a; color:white; border:1px solid #00ffff;}
+.container{ max-width:450px; margin:30px auto; background:#11182b; padding:25px; border-radius:12px; box-shadow:0 0 15px #00ffff50;}
+.badge{ background:#00ffff; color:black; padding:6px 12px; border-radius:5px; display:inline-block; margin:5px;}
+.footer{ text-align:center; margin-top:20px; font-size:13px; color:#aaa;}
+.rules, .winners, .leaderboard, .players, .events, .sponsors { background:#11182b; padding:20px; border-radius:10px; margin:20px auto; max-width:900px;}
+.rules h2, .winners h2, .leaderboard h2, .players h2, .events h2, .sponsors h2 { color:#00ffff;}
+table{ width:100%; border-collapse: collapse; margin-top:10px;}
+table, th, td{ border:1px solid #00ffff;}
+th, td{ padding:8px; text-align:center;}
+th{ background:#00ffff; color:black;}
+/* HERO ANIMATIONS */
+#hero h1 { font-size:50px; color:#00ffff; text-shadow: 0 0 15px #00ffff; animation: glow 2s ease-in-out infinite alternate; }
+@keyframes glow { from { text-shadow: 0 0 10px #00ffff; } to { text-shadow: 0 0 25px #00ffff; } }
+#hero button { animation: pulse 2s infinite; }
+@keyframes pulse { 0% { box-shadow:0 0 10px #00ffff; } 50% { box-shadow:0 0 20px #00ffff; } 100% { box-shadow:0 0 10px #00ffff; } }
+.hero-slide { display:none; position:absolute; top:0; left:0; width:100%; height:100%; background-size:cover; background-position:center; }
+</style></head>
+<body><!-- HERO SECTION WITH ROTATING SLIDES --><section id="hero" style="height:500px; display:flex; align-items:center; justify-content:center; flex-direction:column; text-align:center; color:#00ffff; position:relative; overflow:hidden;">
   <div style="background: rgba(0,0,0,0.5); width:100%; height:100%; position:absolute; top:0; left:0;"></div>
+  <!-- Slides -->
   <div class="hero-slide" style="background:url('https://drive.google.com/uc?export=view&id=1uAue7LhtvtddKM7JCW-1t1UPfrFhHSkx') no-repeat center center/cover;"></div>
+  <div class="hero-slide" style="background:url('https://picsum.photos/1200/500?grayscale') no-repeat center center/cover;"></div>
   <div style="position:relative; z-index:1;">
-    <h1>PK L-I-O-N-S ESPORTS</h1>
+    <h1>PK LINES ESPORTS</h1>
     <p>Where Warriors Rise</p>
     <div id="countdown" style="font-size:20px; margin-top:10px;"></div>
     <div style="margin-top:20px;">
       <a href="#register"><button>REGISTER NOW</button></a>
-      <a href="https://chat.whatsapp.com/JLhkyWtPQbAE06StUBN8m2"><button>JOIN WHATSAPP</button></a>
+      <a href="https://wa.me/923701561639"><button>JOIN WHATSAPP</button></a>
     </div>
   </div>
-</section><script>
-for(let i=0;i<70;i++){let c=document.createElement('div');c.classList.add('confetti-piece');c.style.left=Math.random()*100+'%';c.style.backgroundColor=hsl(${Math.random()*360},100%,50%);c.style.animationDuration=(3+Math.random()*3)+'s';document.body.appendChild(c);}
-</script><script>
-let slideIndex=0;function showSlides(){let slides=document.getElementsByClassName("hero-slide");for(let i=0;i<slides.length;i++){slides[i].style.display="none";}slideIndex++;if(slideIndex>slides.length){slideIndex=1;}slides[slideIndex-1].style.display="block";setTimeout(showSlides,5000);}
-showSlides();
-</script><script>
-const countdownDate=new Date("Feb 20, 2026 22:00:00").getTime();const countdownElem=document.getElementById("countdown");setInterval(function(){const now=new Date().getTime();const distance=countdownDate-now;if(distance<0){countdownElem.innerHTML="Registration Closed!";return;}const days=Math.floor(distance/(1000*60*60*24));const hours=Math.floor((distance%(1000*60*60*24))/(1000*60*60));const minutes=Math.floor((distance%(1000*60*60))/(1000*60));const seconds=Math.floor((distance%(1000*60))/1000);countdownElem.innerHTML=Registration ends in: ${days}d ${hours}h ${minutes}m ${seconds}s;},1000);
-</script><div class="container" id="register" data-aos="fade-up">
-<h2>PUBG MOBILE TOURNAMENT</h2>
-<div class="badge">ENTRY FREE</div>
-<div class="badge">PRIZE POOL 50,000 PKR</div>
-<form id="registration-form" onsubmit="return submitToSheet();">
-<input type="text" name="Team Name" placeholder="Team Name" required>
-<input type="text" name="Leader Name" placeholder="Leader Name" required>
-<input type="text" name="PUBG ID" placeholder="PUBG ID" required>
-<input type="tel" name="WhatsApp" placeholder="03111784089" value="03111784089" readonly>
-<button type="submit">REGISTER NOW</button>
-</form>
-</div><div id="thankyou-message">
-<h2>Thank You for Registering!</h2>
-<p>Your registration has been submitted successfully.</p>
-<p>Our team will contact you soon.</p>
-</div><script>
-function submitToSheet(){
-  const form=document.getElementById('registration-form');
-  const data={
-    team:form['Team Name'].value,
-    leader:form['Leader Name'].value,
-    pubgid:form['PUBG ID'].value,
-    whatsapp:form['WhatsApp'].value
-  };
-  fetch('https://sheet.best/api/sheets/YOUR_SHEET_ID',{
-    method:'POST',
-    headers:{'Content-Type':'application/json'},
-    body:JSON.stringify(data)
-  }).then(r=>console.log('Submitted to sheet')).catch(e=>console.log(e));
-  form.style.display='none';
-  document.getElementById('thankyou-message').style.display='block';
-  return false;
+</section><!-- COUNTDOWN SCRIPT --><script>
+const countdownDate = new Date("Feb 20, 2026 22:00:00").getTime();
+const countdownElem = document.getElementById("countdown");
+setInterval(function() {
+  const now = new Date().getTime();
+  const distance = countdownDate - now;
+  if(distance < 0){ countdownElem.innerHTML = "Registration Closed!"; return; }
+  const days = Math.floor(distance/(1000*60*60*24));
+  const hours = Math.floor((distance%(1000*60*60*24))/(1000*60*60));
+  const minutes = Math.floor((distance%(1000*60*60))/(1000*60));
+  const seconds = Math.floor((distance%(1000*60))/1000);
+  countdownElem.innerHTML = Registration ends in: ${days}d ${hours}h ${minutes}m ${seconds}s;
+}, 1000);
+</script><!-- HERO SLIDES SCRIPT --><script>
+let slideIndex = 0;
+function showSlides(){
+  let slides = document.getElementsByClassName("hero-slide");
+  for(let i=0;i<slides.length;i++){slides[i].style.display="none";}
+  slideIndex++;
+  if(slideIndex>slides.length){slideIndex=1;}
+  slides[slideIndex-1].style.display="block";
+  setTimeout(showSlides,5000);
 }
-</script><div class="footer" data-aos="fade-up">Powered by PK L-I-O-N-S eSports</div>
-<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-<script>AOS.init({duration:1000});</script>
-</body>
+showSlides();
+</script><!-- TOURNAMENT REGISTRATION --><div class="container" id="register" data-aos="fade-up">
+  <h2>PUBG MOBILE TOURNAMENT</h2>
+  <div class="badge">ENTRY FREE</div>
+  <div class="badge">PRIZE POOL 50,000 PKR</div>
+  <form action="https://formsubmit.co/Talhaahmed4399@gmail.com" method="POST" enctype="multipart/form-data">
+    <input type="hidden" name="_captcha" value="false">
+    <input type="text" name="Team Name" placeholder="Team Name" required>
+    <input type="text" name="Leader Name" placeholder="Leader Name" required>
+    <input type="text" name="PUBG ID" placeholder="PUBG ID" required>
+    <input type="tel" name="WhatsApp" placeholder="WhatsApp Number" required>
+    <label>Upload Screenshot (optional)</label><br>
+    <input type="file" name="Screenshot"><br>
+    <button type="submit">REGISTER NOW</button>
+  </form>
+</div><!-- TOURNAMENT RULES --><div class="rules" data-aos="fade-right">
+  <h2>TOURNAMENT RULES</h2>
+  <ul>
+    <li>Entry is FREE.</li>
+    <li>No cheating, hacks, or mods allowed.</li>
+    <li>All matches follow PUBG Mobile official rules.</li>
+    <li>Room ID and timing shared before each match.</li>
+    <li>Screenshot required for confirmation.</li>
+    <li>Respect all players and maintain fair play.</li>
+  </ul>
+</div><!-- UPCOMING EVENTS --><div class="events" data-aos="fade-left">
+  <h2>UPCOMING TOURNAMENTS</h2>
+  <ul>
+    <li>Mini League Season 5 – 25 Feb 2026 – Entry Free – Prize 50,000 PKR</li>
+    <li>Battle Royale Cup – 10 Mar 2026 – Entry Free – Prize 75,000 PKR</li>
+  </ul>
+</div><!-- PAST EVENTS --><div class="events" data-aos="fade-right">
+  <h2>PAST TOURNAMENTS</h2>
+  <ul>
+    <li>Mini League Season 4 – Winner: Alpha Squad</li>
+    <li>Battle Royale Cup – Winner: Dragon Force</li>
+  </ul>
+</div><!-- LEADERBOARD & PLAYERS --><div class="players" data-aos="fade-up">
+  <h2>REGISTERED PLAYERS & LEADERBOARD</h2>
+  <table id="playerTable">
+    <tr>
+      <th>Team</th><th>Leader</th><th>PUBG ID</th><th>WhatsApp</th><th>Points</th><th>Kills</th>
+    </tr>
+    <!-- Google Sheet data placeholder -->
+  </table>
+</div><!-- WINNERS --><div class="winners" data-aos="fade-left">
+  <h2>TOP 3 WINNERS</h2>
+  <table id="winnersTable">
+    <tr><th>Rank</th><th>Team Name</th><th>Points</th></tr>
+    <!-- Google Sheet winners placeholder -->
+  </table>
+</div><!-- SPONSORS / DONATIONS --><div class="sponsors" data-aos="fade-up">
+  <h2>SPONSORS & SUPPORT</h2>
+  <p>Supported by: GamerZone, PK eSports Shop</p>
+  <button onclick="window.open('https://www.paypal.com/donate','_blank')">DONATE</button>
+</div><div class="footer" data-aos="fade-up">Powered by PK Lines eSports</div><!-- AOS Animation Library --><script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script><script>AOS.init({ duration:1000 });</script><!-- GOOGLE SHEET LIVE DATA SCRIPT PLACEHOLDER --><script>
+const SHEET_ID = "YOUR_SHEET_ID"; // Replace with your Google Sheet ID
+const RANGE = "Form Responses 1";
+function fetchSheetData(){
+  const url=https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?sheet=${RANGE}&tq=;
+  fetch(url).then(res=>res.text()).then(rep=>{
+    const jsonData = JSON.parse(rep.substring(47).slice(0,-2));
+    const rows = jsonData.table.rows;
+    const table = document.getElementById("playerTable");
+    const winners = document.getElementById("winnersTable");
+    table.innerHTML = <tr><th>Team</th><th>Leader</th><th>PUBG ID</th><th>WhatsApp</th><th>Points</th><th>Kills</th></tr>;
+    winners.innerHTML = <tr><th>Rank</th><th>Team Name</th><th>Points</th></tr>;
+    rows.forEach((row,index)=>{
+      const team=row.c[0]?.v||"";
+      const leader=row.c[1]?.v||"";
+      const pubg=row.c[2]?.v||"";
+      const whatsapp=row.c[3]?.v||"";
+      const points=row.c[4]?.v||Math.floor(Math.random()*150);
+      const kills=row.c[5]?.v||Math.floor(Math.random()*30);
+      const tr=document.createElement("tr");
+      tr.innerHTML=<td>${team}</td><td>${leader}</td><td>${pubg}</td><td>${whatsapp}</td><td>${points}</td><td>${kills}</td>;
+      table.appendChild(tr);
+      if(index<3){const wtr=document.createElement("tr"); wtr.innerHTML=<td>${index+1}</td><td>${team}</td><td>${points}</td>; winners.appendChild(wtr);}
+    });
+  });
+}
+fetchSheetData();
+setInterval(fetchSheetData,30000);
+</script></body>
 </html>
