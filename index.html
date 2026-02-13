@@ -2,8 +2,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PK LIONS ESports Ultimate Hub - Enhanced</title><!-- AOS for scroll animations --><link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet"><!-- Chart.js --><script src="https://cdn.jsdelivr.net/npm/chart.js"></script><style>
-body{margin:0;font-family:Arial, Helvetica, sans-serif;background:#0b0f1a;color:white;overflow-x:hidden;}
+<title>PK LIONS eSports Ultra Hub</title><!-- AOS for scroll animations --><link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<!-- Chart.js -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script><style>
+body{margin:0;font-family:Arial,sans-serif;background:#0b0f1a;color:white;overflow-x:hidden;}
 a{text-decoration:none;color:#00ffff;}
 button,input{border:none;border-radius:5px;padding:12px;margin:5px 0;font-size:15px;transition:0.3s;}
 button{background:#00ffff;color:black;font-weight:bold;cursor:pointer;box-shadow:0 0 10px #00ffff;}
@@ -11,10 +13,10 @@ button:hover{background:white;color:black;box-shadow:0 0 20px #00ffff;}
 input{width:90%;background:#0b0f1a;color:white;border:1px solid #00ffff;}
 .container{max-width:450px;margin:30px auto;background:#11182b;padding:25px;border-radius:12px;box-shadow:0 0 15px #00ffff50;}
 .badge{background:#00ffff;color:black;padding:6px 12px;border-radius:5px;display:inline-block;margin:5px;animation:rotateBadge 5s linear infinite;}
-@keyframes rotateBadge {0%{transform:rotate(0deg);}100%{transform:rotate(360deg);}}
+@keyframes rotateBadge{0%{transform:rotate(0deg);}100%{transform:rotate(360deg);}}
 .footer{text-align:center;margin-top:20px;font-size:13px;color:#aaa;}
-.rules, .winners, .leaderboard, .players, .events, .sponsors, .achievements, .multimedia, .community{background:#11182b;padding:20px;border-radius:10px;margin:20px auto;max-width:900px;}
-.rules h2, .winners h2, .leaderboard h2, .players h2, .events h2, .sponsors h2, .achievements h2, .multimedia h2, .community h2{color:#00ffff;text-shadow:0 0 10px #00ffff;}
+.rules,.winners,.leaderboard,.players,.events,.sponsors,.achievements,.multimedia,.community{background:#11182b;padding:20px;border-radius:10px;margin:20px auto;max-width:900px;}
+.rules h2,.winners h2,.leaderboard h2,.players h2,.events h2,.sponsors h2,.achievements h2,.multimedia h2,.community h2{color:#00ffff;text-shadow:0 0 10px #00ffff;}
 table{width:100%;border-collapse: collapse;margin-top:10px;}
 table, th, td{border:1px solid #00ffff;}
 th, td{padding:8px;text-align:center;}
@@ -31,7 +33,6 @@ th{background:#00ffff;color:black;}
 <body><!-- HERO --><section id="hero">
   <div style="background: rgba(0,0,0,0.5); width:100%; height:100%; position:absolute; top:0; left:0;"></div>
   <div class="hero-slide" style="background:url('https://drive.google.com/uc?export=view&id=1uAue7LhtvtddKM7JCW-1t1UPfrFhHSkx') no-repeat center center/cover;"></div>
-  <div class="hero-slide" style="background:url('https://picsum.photos/1200/550?grayscale') no-repeat center center/cover;"></div>
   <div style="position:relative; z-index:1;">
     <h1>PK LINES ESPORTS</h1>
     <p>Where Warriors Rise</p>
@@ -103,7 +104,31 @@ setInterval(function() {
 <h2>SUPPORT US</h2>
 <p>Donate via EasyPaisa: <strong>03111784089</strong></p>
 <button onclick="window.open('https://www.easypaisa.com.pk/', '_blank')">DONATE NOW</button>
-</div><div class="footer" data-aos="fade-up">Powered by PK Lines eSports</div>
+</div><!-- LEADERBOARD (LIVE GOOGLE SHEET) --><div class="leaderboard" data-aos="fade-up">
+<h2>LEADERBOARD</h2>
+<table id="leaderboard-table">
+<tr><th>Team</th><th>Leader</th><th>PUBG ID</th><th>WhatsApp</th><th>Points</th><th>Kills</th></tr>
+<!-- Dynamic rows added via JavaScript -->
+</table>
+</div><script>
+// Replace 'YOUR_GOOGLE_SHEET_JSON_URL' with your published sheet JSON link
+const sheetUrl = 'YOUR_GOOGLE_SHEET_JSON_URL';
+fetch(sheetUrl)
+.then(response => response.json())
+.then(data => {
+  const table = document.getElementById('leaderboard-table');
+  data.feed.entry.forEach(entry => {
+    const row = table.insertRow();
+    row.insertCell(0).innerText = entry.gsx$team.$t;
+    row.insertCell(1).innerText = entry.gsx$leader.$t;
+    row.insertCell(2).innerText = entry.gsx$pubgid.$t;
+    row.insertCell(3).innerText = entry.gsx$whatsapp.$t;
+    row.insertCell(4).innerText = entry.gsx$points.$t;
+    row.insertCell(5).innerText = entry.gsx$kills.$t;
+  });
+})
+.catch(err=>console.log('Error loading Google Sheet:',err));
+</script><div class="footer" data-aos="fade-up">Powered by PK Lines eSports</div>
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script>AOS.init({duration:1000});</script>
 </body>
