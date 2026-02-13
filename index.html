@@ -2,9 +2,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PK L-I-O-N-S Ultimate eSports Hub</title><!-- AOS for scroll animations --><link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-<!-- Chart.js for stats -->
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script><style>
+<title>PK L-I-O-N-S Ultimate eSports Hub</title>
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<style>
 body{margin:0;font-family:Arial,sans-serif;background:#0b0f1a;color:white;overflow-x:hidden;}
 a{text-decoration:none;color:#0ff;}
 button,input{border:none;border-radius:5px;padding:12px;margin:5px 0;font-size:15px;transition:0.3s;}
@@ -15,8 +16,8 @@ input{width:90%;background:#0b0f1a;color:white;border:1px solid #0ff;}
 .badge{background:#0ff;color:black;padding:6px 12px;border-radius:5px;display:inline-block;margin:5px;animation:rotateBadge 5s linear infinite;}
 @keyframes rotateBadge{0%{transform:rotate(0deg);}100%{transform:rotate(360deg);}}
 .footer{text-align:center;margin-top:20px;font-size:13px;color:#aaa;}
-.rules,.winners,.leaderboard,.players,.events,.sponsors,.achievements,.multimedia,.community{background:#11182b;padding:20px;border-radius:10px;margin:20px auto;max-width:950px;}
-.rules h2,.winners h2,.leaderboard h2,.players h2,.events h2,.sponsors h2,.achievements h2,.multimedia h2,.community h2{color:#0ff;text-shadow:0 0 10px #0ff;}
+.section{background:#11182b;padding:20px;border-radius:10px;margin:20px auto;max-width:950px;}
+.section h2{color:#0ff;text-shadow:0 0 10px #0ff;}
 table{width:100%;border-collapse: collapse;margin-top:10px;}
 table, th, td{border:1px solid #0ff;}
 th, td{padding:8px;text-align:center;}
@@ -29,11 +30,12 @@ th{background:#0ff;color:black;}
 .hero-slide{display:none;position:absolute;top:0;left:0;width:100%;height:100%;background-size:cover;background-position:center;}
 .confetti-piece{width:10px;height:10px;position:absolute;top:0;left:50%;opacity:0.8;animation:fall 5s linear infinite;}
 @keyframes fall{0%{transform:translateY(0) rotate(0deg);}100%{transform:translateY(700px) rotate(360deg);opacity:0;}}
-.event-card{background:#0b0f1a;padding:15px;margin:10px;border-radius:8px;display:inline-block;width:250px;text-align:center;box-shadow:0 0 15px #0ff;transition:0.3s;}
-.event-card:hover{transform:scale(1.05);box-shadow:0 0 30px #0ff;}
+.card{background:#0b0f1a;padding:15px;margin:10px;border-radius:8px;display:inline-block;width:250px;text-align:center;box-shadow:0 0 15px #0ff;transition:0.3s;}
+.card:hover{transform:scale(1.05);box-shadow:0 0 30px #0ff;}
 .player-card{background:#11182b;padding:10px;margin:10px;border-radius:8px;display:inline-block;width:180px;text-align:center;box-shadow:0 0 10px #0ff;transition:0.3s;}
 .player-card:hover{transform:scale(1.05);box-shadow:0 0 25px #0ff;}
-</style></head>
+</style>
+</head>
 <body><!-- HERO --><section id="hero">
   <div style="background: rgba(0,0,0,0.5); width:100%; height:100%; position:absolute; top:0; left:0;"></div>
   <div class="hero-slide" style="background:url('https://drive.google.com/uc?export=view&id=1uAue7LhtvtddKM7JCW-1t1UPfrFhHSkx') no-repeat center center/cover;"></div>
@@ -47,34 +49,27 @@ th{background:#0ff;color:black;}
     </div>
   </div>
 </section><!-- CONFETTI --><script>
-for(let i=0;i<70;i++){
-  let c=document.createElement('div');c.classList.add('confetti-piece');c.style.left=Math.random()*100+'%';c.style.backgroundColor=hsl(${Math.random()*360},100%,50%);c.style.animationDuration=(3+Math.random()*3)+'s';document.body.appendChild(c);
-}
+for(let i=0;i<70;i++){let c=document.createElement('div');c.classList.add('confetti-piece');c.style.left=Math.random()*100+'%';c.style.backgroundColor=hsl(${Math.random()*360},100%,50%);c.style.animationDuration=(3+Math.random()*3)+'s';document.body.appendChild(c);}
 </script><script>
 let slideIndex=0;function showSlides(){let slides=document.getElementsByClassName("hero-slide");for(let i=0;i<slides.length;i++){slides[i].style.display="none";}slideIndex++;if(slideIndex>slides.length){slideIndex=1;}slides[slideIndex-1].style.display="block";setTimeout(showSlides,5000);}
 showSlides();
 </script><script>
-const countdownDate = new Date("Feb 20, 2026 22:00:00").getTime();
-const countdownElem = document.getElementById("countdown");
-setInterval(function(){const now=new Date().getTime();const distance=countdownDate-now;if(distance<0){countdownElem.innerHTML="Registration Closed!";return;}
-const days=Math.floor(distance/(1000*60*60*24));const hours=Math.floor((distance%(1000*60*60*24))/(1000*60*60));const minutes=Math.floor((distance%(1000*60*60))/(1000*60));const seconds=Math.floor((distance%(1000*60))/1000);
-countdownElem.innerHTML=Registration ends in: ${days}d ${hours}h ${minutes}m ${seconds}s;
-},1000);
+const countdownDate=new Date("Feb 20, 2026 22:00:00").getTime();const countdownElem=document.getElementById("countdown");setInterval(function(){const now=new Date().getTime();const distance=countdownDate-now;if(distance<0){countdownElem.innerHTML="Registration Closed!";return;}const days=Math.floor(distance/(1000*60*60*24));const hours=Math.floor((distance%(1000*60*60*24))/(1000*60*60));const minutes=Math.floor((distance%(1000*60*60))/(1000*60));const seconds=Math.floor((distance%(1000*60))/1000);countdownElem.innerHTML=Registration ends in: ${days}d ${hours}h ${minutes}m ${seconds}s;},1000);
 </script><!-- REGISTRATION --><div class="container" id="register" data-aos="fade-up">
-  <h2>PUBG MOBILE TOURNAMENT</h2>
-  <div class="badge">ENTRY FREE</div>
-  <div class="badge">PRIZE POOL 50,000 PKR</div>
-  <form action="https://formsubmit.co/Talhaahmed4399@gmail.com" method="POST" enctype="multipart/form-data">
-    <input type="hidden" name="_captcha" value="false">
-    <input type="text" name="Team Name" placeholder="Team Name" required>
-    <input type="text" name="Leader Name" placeholder="Leader Name" required>
-    <input type="text" name="PUBG ID" placeholder="PUBG ID" required>
-    <input type="tel" name="WhatsApp" placeholder="WhatsApp Number" required>
-    <label>Upload Screenshot (optional)</label><br>
-    <input type="file" name="Screenshot"><br>
-    <button type="submit">REGISTER NOW</button>
-  </form>
-</div><!-- RULES --><div class="rules" data-aos="fade-right">
+<h2>PUBG MOBILE TOURNAMENT</h2>
+<div class="badge">ENTRY FREE</div>
+<div class="badge">PRIZE POOL 50,000 PKR</div>
+<form action="https://formsubmit.co/Talhaahmed4399@gmail.com" method="POST" enctype="multipart/form-data">
+<input type="hidden" name="_captcha" value="false">
+<input type="text" name="Team Name" placeholder="Team Name" required>
+<input type="text" name="Leader Name" placeholder="Leader Name" required>
+<input type="text" name="PUBG ID" placeholder="PUBG ID" required>
+<input type="tel" name="WhatsApp" placeholder="WhatsApp Number" required>
+<label>Upload Screenshot (optional)</label><br>
+<input type="file" name="Screenshot"><br>
+<button type="submit">REGISTER NOW</button>
+</form>
+</div><!-- RULES --><div class="section rules" data-aos="fade-right">
 <h2>TOURNAMENT RULES</h2>
 <ul>
 <li>Entry is FREE.</li>
@@ -84,53 +79,46 @@ countdownElem.innerHTML=Registration ends in: ${days}d ${hours}h ${minutes}m ${s
 <li>Screenshot required for confirmation.</li>
 <li>Respect all players and maintain fair play.</li>
 </ul>
-</div><!-- UPCOMING EVENTS --><div class="events" data-aos="fade-up">
+</div><!-- UPCOMING EVENTS --><div class="section events" data-aos="fade-up">
 <h2>UPCOMING EVENTS</h2>
-<div class="event-card">Feb 25 - Mini League Finals</div>
-<div class="event-card">Mar 5 - PK L-I-O-N-S Invitational</div>
-<div class="event-card">Mar 20 - Spring Championship</div>
-</div><!-- MULTIMEDIA --><div class="multimedia" data-aos="fade-left">
+<div class="card">Feb 25 - Mini League Finals</div>
+<div class="card">Mar 5 - PK L-I-O-N-S Invitational</div>
+<div class="card">Mar 20 - Spring Championship</div>
+</div><!-- MULTIMEDIA --><div class="section multimedia" data-aos="fade-left">
 <h2>HIGHLIGHT VIDEOS</h2>
 <iframe width="100%" height="315" src="https://www.youtube.com/embed/jmbTUSMhR28" frameborder="0" allowfullscreen></iframe>
-</div><!-- DONATE BUTTON --><div class="sponsors" data-aos="fade-up">
-<h2>SUPPORT US</h2>
+</div><!-- DONATE & CHARITY --><div class="section sponsors" data-aos="fade-up">
+<h2>SUPPORT & CHARITY</h2>
 <p>Donate via EasyPaisa: <strong>03111784089</strong></p>
-<button onclick="window.open('https://www.easypaisa.com.pk/', '_blank')">DONATE NOW</button>
-</div><!-- LEADERBOARD --><div class="leaderboard" data-aos="fade-up">
+<p>Donate via JazzCash: <strong>03111784089</strong></p>
+<button onclick="window.open('https://www.easypaisa.com.pk/', '_blank')">EASYPASA DONATE</button>
+<button onclick="window.open('https://www.jazzcash.com.pk/', '_blank')">JAZZCASH DONATE</button>
+<div class="card">Total Donations: PKR 0 (placeholder)</div>
+<div class="card">Top Donor: Player123 (placeholder)</div>
+</div><!-- LEADERBOARD --><div class="section leaderboard" data-aos="fade-up">
 <h2>LEADERBOARD</h2>
 <table id="leaderboard-table">
 <tr><th>Team</th><th>Leader</th><th>PUBG ID</th><th>WhatsApp</th><th>Points</th><th>Kills</th></tr>
 </table>
-</div><script>
-// Sample Google Sheet JSON URL
+</div>
+<script>
 const sheetUrl='https://spreadsheets.google.com/feeds/list/YOUR_SHEET_ID/od6/public/values?alt=json';
-fetch(sheetUrl).then(r=>r.json()).then(data=>{
-const table=document.getElementById('leaderboard-table');
-data.feed.entry.forEach(entry=>{
-const row=table.insertRow();
-row.insertCell(0).innerText=entry.gsx$team.$t;
-row.insertCell(1).innerText=entry.gsx$leader.$t;
-row.insertCell(2).innerText=entry.gsx$pubgid.$t;
-row.insertCell(3).innerText=entry.gsx$whatsapp.$t;
-row.insertCell(4).innerText=entry.gsx$points.$t;
-row.insertCell(5).innerText=entry.gsx$kills.$t;
-});
-}).catch(err=>console.log('Error loading Google Sheet:',err));
-</script><!-- PLAYER STAT CARDS (SAMPLE) --><div class="players" data-aos="fade-up">
+fetch(sheetUrl).then(r=>r.json()).then(data=>{const table=document.getElementById('leaderboard-table');data.feed.entry.forEach(entry=>{const row=table.insertRow();row.insertCell(0).innerText=entry.gsx$team.$t;row.insertCell(1).innerText=entry.gsx$leader.$t;row.insertCell(2).innerText=entry.gsx$pubgid.$t;row.insertCell(3).innerText=entry.gsx$whatsapp.$t;row.insertCell(4).innerText=entry.gsx$points.$t;row.insertCell(5).innerText=entry.gsx$kills.$t;});}).catch(err=>console.log('Error loading Google Sheet:',err));
+</script><!-- PLAYER CARDS --><div class="section players" data-aos="fade-up">
 <h2>TOP PLAYERS</h2>
 <div class="player-card">Player: Ali<br>ID: ALI123<br>Points: 150<br>Kills: 20</div>
 <div class="player-card">Player: Ahmed<br>ID: AHM456<br>Points: 130<br>Kills: 18</div>
 <div class="player-card">Player: Sara<br>ID: SARA789<br>Points: 120<br>Kills: 15</div>
-</div><!-- CHARTS --><div class="achievements" data-aos="fade-up">
+</div><!-- XP CHART --><div class="section achievements" data-aos="fade-up">
 <h2>STATS & XP CHART</h2>
 <canvas id="xpChart" width="400" height="200"></canvas>
 </div>
 <script>
 var ctx=document.getElementById('xpChart').getContext('2d');
 var xpChart=new Chart(ctx,{type:'bar',data:{labels:['Ali','Ahmed','Sara'],datasets:[{label:'XP Points',data:[150,130,120],backgroundColor:'#0ff'}]},options:{scales:{y:{beginAtZero:true}}}});
-</script><!-- COMMUNITY --><div class="community" data-aos="fade-up">
-<h2>COMMUNITY POLLS & COMMENTS</h2>
-<p>Poll UI and comment UI placeholders</p>
+</script><!-- COMMUNITY CHAT --><div class="section community" data-aos="fade-up">
+<h2>COMMUNITY CHAT</h2>
+<p>Simple placeholder chat UI (integrate Firebase later for live chat)</p>
 </div><div class="footer" data-aos="fade-up">Powered by PK L-I-O-N-S eSports</div>
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script>AOS.init({duration:1000});</script>
