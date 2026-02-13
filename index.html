@@ -2,14 +2,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PK LIONS eSports Ultra Hub</title><!-- AOS for scroll animations --><link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-<!-- Chart.js -->
+<title>PK L-I-O-N-S eSports Hub</title><!-- AOS for scroll animations --><link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<!-- Chart.js for stats -->
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script><style>
 body{margin:0;font-family:Arial,sans-serif;background:#0b0f1a;color:white;overflow-x:hidden;}
 a{text-decoration:none;color:#00ffff;}
 button,input{border:none;border-radius:5px;padding:12px;margin:5px 0;font-size:15px;transition:0.3s;}
 button{background:#00ffff;color:black;font-weight:bold;cursor:pointer;box-shadow:0 0 10px #00ffff;}
-button:hover{background:white;color:black;box-shadow:0 0 20px #00ffff;}
+button:hover{background:white;color:black;box-shadow:0 0 20px #0ff;}
 input{width:90%;background:#0b0f1a;color:white;border:1px solid #00ffff;}
 .container{max-width:450px;margin:30px auto;background:#11182b;padding:25px;border-radius:12px;box-shadow:0 0 15px #00ffff50;}
 .badge{background:#00ffff;color:black;padding:6px 12px;border-radius:5px;display:inline-block;margin:5px;animation:rotateBadge 5s linear infinite;}
@@ -34,7 +34,7 @@ th{background:#00ffff;color:black;}
   <div style="background: rgba(0,0,0,0.5); width:100%; height:100%; position:absolute; top:0; left:0;"></div>
   <div class="hero-slide" style="background:url('https://drive.google.com/uc?export=view&id=1uAue7LhtvtddKM7JCW-1t1UPfrFhHSkx') no-repeat center center/cover;"></div>
   <div style="position:relative; z-index:1;">
-    <h1>PK LINES ESPORTS</h1>
+    <h1>PK L-I-O-N-S ESPORTS</h1>
     <p>Where Warriors Rise</p>
     <div id="countdown" style="font-size:20px; margin-top:10px;"></div>
     <div style="margin-top:20px;">
@@ -99,7 +99,7 @@ setInterval(function() {
 </ul>
 </div><!-- MULTIMEDIA --><div class="multimedia" data-aos="fade-left">
 <h2>HIGHLIGHT VIDEOS</h2>
-<iframe width="100%" height="315" src="https://www.youtube.com/embed?listType=user_uploads&list=staresports67" frameborder="0" allowfullscreen></iframe>
+<iframe width="100%" height="315" src="https://www.youtube.com/embed/jmbTUSMhR28" frameborder="0" allowfullscreen></iframe>
 </div><!-- DONATE BUTTON --><div class="sponsors" data-aos="fade-up">
 <h2>SUPPORT US</h2>
 <p>Donate via EasyPaisa: <strong>03111784089</strong></p>
@@ -108,11 +108,10 @@ setInterval(function() {
 <h2>LEADERBOARD</h2>
 <table id="leaderboard-table">
 <tr><th>Team</th><th>Leader</th><th>PUBG ID</th><th>WhatsApp</th><th>Points</th><th>Kills</th></tr>
-<!-- Dynamic rows added via JavaScript -->
 </table>
 </div><script>
-// Replace 'YOUR_GOOGLE_SHEET_JSON_URL' with your published sheet JSON link
-const sheetUrl = 'YOUR_GOOGLE_SHEET_JSON_URL';
+// Sample Google Sheet JSON URL
+const sheetUrl = 'https://spreadsheets.google.com/feeds/list/YOUR_SHEET_ID/od6/public/values?alt=json';
 fetch(sheetUrl)
 .then(response => response.json())
 .then(data => {
@@ -128,7 +127,7 @@ fetch(sheetUrl)
   });
 })
 .catch(err=>console.log('Error loading Google Sheet:',err));
-</script><div class="footer" data-aos="fade-up">Powered by PK Lines eSports</div>
+</script><div class="footer" data-aos="fade-up">Powered by PK L-I-O-N-S eSports</div>
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script>AOS.init({duration:1000});</script>
 </body>
