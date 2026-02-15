@@ -2,7 +2,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PK LIONS ESPORTS</title><style>
+<title>PK LIONS ESPORTS</title>
+<style>
 *{box-sizing:border-box; margin:0; padding:0; font-family:Arial,Helvetica,sans-serif;}
 body{background:#050812; color:white;}
 button{padding:12px 28px; border:none; border-radius:30px; background:#00ffd5; font-weight:bold; cursor:pointer; margin:10px; min-height:48px; touch-action:manipulation;}
@@ -27,7 +28,8 @@ input{width:100%; padding:10px; margin:6px 0; border-radius:10px; border:none;}
 .gallery img{width:100%; border-radius:10px;}
 .leaderboard-table{width:100%; border-collapse:collapse;}
 .leaderboard-table th, .leaderboard-table td{border:1px solid cyan; padding:8px; text-align:center;}
-</style></head>
+</style>
+</head>
 <body><div class="hero">
 <div class="overlay"></div>
 <div class="hero-inner">
@@ -42,12 +44,14 @@ input{width:100%; padding:10px; margin:6px 0; border-radius:10px; border:none;}
 <div class="card">
 <span class="light"></span><b>Registration Open</b><br><br>
 Prize Pool: <b>50,000 PKR</b>
-</div><div class="card">
+</div>
+<div class="card">
 <h3>Latest News</h3>
 <div class="news">🔥 Registration Started – 50K Prize Pool</div>
 <div class="news">📢 PUBG Mobile Last Circle Clash Season 1</div>
 <div class="news">⏳ Upcoming Matches Soon</div>
-</div><div class="card">
+</div>
+<div class="card">
 <h3>Featured Players</h3>
 <div class="players">
 <div class="player">Player 1</div>
@@ -55,16 +59,19 @@ Prize Pool: <b>50,000 PKR</b>
 <div class="player">Player 3</div>
 <div class="player">Player 4</div>
 </div>
-</div><div class="card">
+</div>
+<div class="card">
 <h3>Live Bracket</h3>
 <div class="match">Team Alpha vs Team Bravo</div>
 <div class="match">Winner Advances</div>
-</div><div class="card">
+</div>
+<div class="card">
 <h3>Upcoming Events</h3>
 <div class="news">Event 1: Online Qualifiers</div>
 <div class="news">Event 2: Semi Finals</div>
 <div class="news">Event 3: Grand Finale</div>
-</div><div class="card">
+</div>
+<div class="card">
 <h3>Poster Gallery</h3>
 <div class="gallery">
 <img src="https://via.placeholder.com/150x200?text=Poster+1">
@@ -72,7 +79,8 @@ Prize Pool: <b>50,000 PKR</b>
 <img src="https://via.placeholder.com/150x200?text=Poster+3">
 <img src="https://via.placeholder.com/150x200?text=Poster+4">
 </div>
-</div><div id="dash" class="card hidden">
+</div>
+<div id="dash" class="card hidden">
 <h2>Team Registration</h2>
 <input id="team" placeholder="Team Name">
 <input id="tag" placeholder="Team Tag">
@@ -83,17 +91,20 @@ Prize Pool: <b>50,000 PKR</b>
 <input id="igl" placeholder="IGL WhatsApp">
 <input id="sponsor" placeholder="Sponsor WhatsApp">
 <button onclick="submit()">Submit Registration</button>
-</div><div id="done" class="card hidden">
+</div>
+<div id="done" class="card hidden">
 <h2>✅ Congratulations</h2>
 <p>Your team registration has been submitted.</p>
 <p>PK Lions will contact you soon.</p>
-</div><div class="card">
+</div>
+<div class="card">
 <h3>PUBG Points Calculator</h3>
 <input id="kills" placeholder="Total Kills">
 <input id="placement" placeholder="Placement (1st,2nd, etc)">
 <button onclick="calculatePoints()">Calculate Points</button>
 <p id="pointsResult"></p>
-</div><div class="card">
+</div>
+<div class="card">
 <h3>Automatic Leaderboard</h3>
 <table class="leaderboard-table" id="leaderboard">
 <tr><th>Rank</th><th>Team</th><th>Points</th></tr>
@@ -101,11 +112,18 @@ Prize Pool: <b>50,000 PKR</b>
 <tr><td>2</td><td>Team Bravo</td><td>110</td></tr>
 <tr><td>3</td><td>Team Charlie</td><td>95</td></tr>
 </table>
-</div></div><div class="footer">
+</div>
+<div class="footer">
 PK LIONS ESPORTS © 2026
 </div><script>
 const SCRIPT_URL="https://script.google.com/macros/s/AKfycbyRONRicyN3pC3Q76JKNqJo-vuDzEpBg4v41_WIxBiyD1kuvxg9_5-IkGmnvhUaeapA/exec";
-function openDash(){document.getElementById("dash").classList.remove("hidden");window.scrollTo({ top: document.body.scrollHeight, behavior:"smooth" });}
+function openDash(){
+  const dash = document.getElementById("dash");
+  if(dash){
+    dash.classList.remove("hidden");
+    window.scrollTo({ top: document.body.scrollHeight, behavior:"smooth" });
+  }
+}
 function submit(){
 let team=document.getElementById("team").value;
 let tag=document.getElementById("tag").value;
@@ -127,7 +145,6 @@ let kills=parseInt(document.getElementById("kills").value)||0;
 let placement=parseInt(document.getElementById("placement").value)||0;
 let points = kills*10 + Math.max(0,100-placement);
 document.getElementById("pointsResult").innerText="Total Points: "+points;
-// Update leaderboard dynamically
 let leaderboard=document.getElementById("leaderboard");
 let newRow=leaderboard.insertRow();
 newRow.innerHTML=<td>${leaderboard.rows.length-1}</td><td>${document.getElementById("team").value || 'New Team'}</td><td>${points}</td>;
