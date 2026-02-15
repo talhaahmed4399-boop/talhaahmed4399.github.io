@@ -2,160 +2,294 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>eSports Tournament System</title>
+<title>PK LIONS ESPORTS</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
 <style>
-body{margin:0;font-family:Arial;background:#0b0f1a;color:white}
-section{padding:20px}
-input,button{padding:10px;margin:5px;width:90%}
-button{background:#00ffcc;border:none;color:black;font-weight:bold}
-.card{background:#141a2a;padding:15px;border-radius:10px;margin:10px}
+
+*{box-sizing:border-box}
+
+body{
+margin:0;
+font-family:Arial;
+background:#050812;
+color:white;
+}
+
+.hero{
+height:100vh;
+background:url("poster.jpg") center/cover fixed;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+text-align:center;
+}
+
+.overlay{
+background:rgba(0,0,0,.7);
+width:100%;
+height:100%;
+position:absolute;
+}
+
+.hero-content{
+z-index:2;
+}
+
+.logo{
+font-size:45px;
+font-weight:bold;
+text-shadow:0 0 25px cyan;
+animation:glow 2s infinite;
+}
+
+@keyframes glow{
+50%{text-shadow:0 0 50px cyan}
+}
+
+.btn{
+padding:12px 28px;
+border:none;
+border-radius:25px;
+background:#00ffd5;
+font-weight:bold;
+margin:8px;
+cursor:pointer;
+}
+
+.section{
+padding:40px 20px;
+}
+
+.card{
+background:#0d1222;
+padding:20px;
+border-radius:15px;
+margin:15px auto;
+max-width:900px;
+box-shadow:0 0 25px #00ffd533;
+}
+
+.status{
+display:flex;
+align-items:center;
+gap:10px;
+}
+
+.light{
+width:12px;
+height:12px;
+border-radius:50%;
+background:#00ff00;
+box-shadow:0 0 10px #00ff00;
+animation:pulse 1.5s infinite;
+}
+
+@keyframes pulse{50%{opacity:.3}}
+
+input{
+width:100%;
+padding:10px;
+margin:6px 0;
+border-radius:10px;
+border:none;
+}
+
 .hidden{display:none}
+
+.player-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+gap:15px;
+}
+
+.player{
+background:#111;
+padding:15px;
+border-radius:12px;
+text-align:center;
+transition:.3s;
+}
+
+.player:hover{transform:scale(1.05)}
+
+.bracket{
+display:flex;
+justify-content:space-around;
+}
+
+.round{
+display:flex;
+flex-direction:column;
+gap:10px;
+}
+
+.match{
+background:#111;
+padding:10px;
+border-radius:8px;
+animation:float 2s infinite alternate;
+}
+
+@keyframes float{from{transform:translateY(0)}to{transform:translateY(-5px)}}
+
+.sponsors img{
+width:120px;
+margin:10px;
+filter:grayscale(1);
+}
+
+.countdown{
+font-size:24px;
+margin:10px;
+}
+
+.news{border-left:4px solid cyan;padding-left:10px;margin:10px}
+
+iframe{width:100%;height:250px;border-radius:15px}
+
 </style>
 </head>
 
 <body>
 
-<section id="home">
+<div class="hero">
+<div class="overlay"></div>
+<div class="hero-content">
+<div class="logo">PK LIONS ESPORTS</div>
+<p>PUBG Mobile Tournament Platform</p>
 
-<h2>🏆 PUBG Mobile Tournament</h2>
+<div class="countdown" id="timer"></div>
 
-<div class="card">
-Entry Fee: 150 PKR<br>
-Prize Pool: 3000 PKR
+<button class="btn" onclick="openDash()">Tournament Dashboard</button>
+<a class="btn" href="https://chat.whatsapp.com/JLhkyWtPQbAE06StUBN8m2">Join WhatsApp</a>
+
+</div>
 </div>
 
-<button onclick="show('register')">Register Team</button>
-<button onclick="show('adminLogin')">Admin Panel</button>
-<button onclick="show('casterLogin')">Caster Panel</button>
+<div class="section">
 
-<a href="https://chat.whatsapp.com/JLhkyWtPQbAE06StUBN8m2">
-<button>Join WhatsApp Community</button></a>
+<div class="card">
+<h2>Last Circle Clash – Season 1</h2>
 
-</section>
+<div class="status">
+<div class="light"></div>
+<b>Registration Open</b>
+</div>
 
-<!---------------- REGISTER ------------->
+<p>Prize Pool: <b>50,000 PKR</b></p>
 
-<section id="register" class="hidden">
+</div>
+
+<div class="card">
+<h3>📰 News</h3>
+<div class="news">🔥 Registration Open – 50K Prize Pool</div>
+<div class="news">📢 New Tournament Started</div>
+<div class="news">⏳ Upcoming Events Soon</div>
+</div>
+
+<div class="card">
+<h3>Featured Players</h3>
+<div class="player-grid">
+<div class="player">Player 1</div>
+<div class="player">Player 2</div>
+<div class="player">Player 3</div>
+<div class="player">Player 4</div>
+</div>
+</div>
+
+<div class="card">
+<h3>Live Bracket</h3>
+<div class="bracket">
+<div class="round">
+<div class="match">Team A</div>
+<div class="match">Team B</div>
+</div>
+<div class="round">
+<div class="match">Winner</div>
+</div>
+</div>
+</div>
+
+<div class="card sponsors">
+<h3>Sponsors</h3>
+<img src="https://dummyimage.com/200x100/0ff/000&text=Sponsor">
+<img src="https://dummyimage.com/200x100/0ff/000&text=Sponsor">
+</div>
+
+<div class="card">
+<h3>Live Stream</h3>
+<iframe src="https://www.youtube.com/embed/jmbTUSMhR28"></iframe>
+</div>
+
+<div id="dashboard" class="card hidden">
 
 <h3>Team Registration</h3>
 
 <input id="team" placeholder="Team Name">
-<input id="leader" placeholder="Leader Name">
-<input id="phone" placeholder="WhatsApp Number">
+<input placeholder="Team Tag">
 
-<button onclick="submitForm()">Submit</button>
+<input placeholder="Player 1">
+<input placeholder="Player 2">
+<input placeholder="Player 3">
+<input placeholder="Player 4">
 
-</section>
+<input placeholder="IGL WhatsApp">
+<input placeholder="Sponsor WhatsApp">
 
-<section id="thanks" class="hidden">
-<h2>✅ Congratulations!</h2>
-<p>Your registration has been submitted.<br>
-Please wait — our team will contact you soon.</p>
-<button onclick="show('home')">Home</button>
-</section>
+<button class="btn" onclick="submitTeam()">Submit</button>
 
-<!---------------- ADMIN ------------->
-
-<section id="adminLogin" class="hidden">
-<h3>Admin Login</h3>
-<input id="adminUser" placeholder="Username">
-<input id="adminPass" type="password" placeholder="Password">
-<button onclick="adminLogin()">Login</button>
-</section>
-
-<section id="adminPanel" class="hidden">
-<h2>Admin Panel</h2>
-
-<div class="card">
-<h4>Donations</h4>
-JazzCash: YOUR NUMBER<br>
-EasyPaisa: YOUR NUMBER
 </div>
 
-<textarea placeholder="Announcement"></textarea>
-<button>Send</button>
+<div id="success" class="card hidden">
+<h2>✅ Congratulations</h2>
+<p>Your registration has been submitted.</p>
+<p>PK Lions will contact you soon.</p>
+</div>
 
-<button onclick="show('home')">Logout</button>
-</section>
-
-<!---------------- CASTER ------------->
-
-<section id="casterLogin" class="hidden">
-<h3>Caster Login</h3>
-<input id="casterUser" placeholder="Username">
-<input id="casterPass" type="password" placeholder="Password">
-<button onclick="casterLogin()">Login</button>
-</section>
-
-<section id="casterPanel" class="hidden">
-<h2>🎤 Caster Panel</h2>
-
-<textarea placeholder="Match Notes"></textarea>
-<button>Save</button>
-
-<textarea placeholder="Live Commentary"></textarea>
-<button>Post</button>
-
-<button onclick="show('home')">Logout</button>
-</section>
-
-<!---------------- CHAT ------------->
-
-<section>
-<h3>Community Chat</h3>
-<input placeholder="Message">
-<button>Send</button>
-</section>
-
-<!---------------- LEADERBOARD ------------->
-
-<section>
-<h3>Leaderboard</h3>
-<div class="card">Team Alpha – 20 pts</div>
-<div class="card">Team Bravo – 15 pts</div>
-</section>
-
-<!---------------- GAME REQUEST ------------->
-
-<section>
-<h3>Request Game</h3>
-<input placeholder="Game Name">
-<button>Request</button>
-</section>
+</div>
 
 <script>
 
-function show(id){
-document.querySelectorAll('section').forEach(s=>s.classList.add('hidden'));
-document.getElementById(id).classList.remove('hidden');
+const GOOGLE_SCRIPT_URL="PASTE_YOUR_GOOGLE_APPS_SCRIPT_URL_HERE";
+
+function openDash(){
+dashboard.classList.remove("hidden");
+window.scrollTo(0,document.body.scrollHeight);
 }
 
-function adminLogin(){
-if(adminUser.value=="admin" && adminPass.value=="1234"){
-show('adminPanel');
-}else alert("Wrong Admin Login");
-}
+function submitTeam(){
 
-function casterLogin(){
-if(casterUser.value=="caster" && casterPass.value=="1234"){
-show('casterPanel');
-}else alert("Wrong Caster Login");
-}
-
-function submitForm(){
-
-fetch("YOUR_GOOGLE_SCRIPT_URL",{
+fetch(GOOGLE_SCRIPT_URL,{
 method:"POST",
+mode:"no-cors",
+headers:{"Content-Type":"application/json"},
 body:JSON.stringify({
-team:team.value,
-leader:leader.value,
-phone:phone.value
+team:team.value
 })
 });
 
-show('thanks');
+dashboard.classList.add("hidden");
+success.classList.remove("hidden");
 }
+
+// Countdown
+
+const target=new Date("Feb 20, 2026 00:00:00").getTime();
+
+setInterval(()=>{
+let now=new Date().getTime();
+let d=target-now;
+
+let days=Math.floor(d/(1000*60*60*24));
+let hrs=Math.floor((d%(1000*60*60*24))/(1000*60*60));
+let min=Math.floor((d%(1000*60*60))/(1000*60));
+let sec=Math.floor((d%(1000*60))/1000);
+
+timer.innerHTML=Registration ends in ${days}d ${hrs}h ${min}m ${sec}s;
+
+},1000);
 
 </script>
 
