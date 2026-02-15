@@ -3,11 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <title>PK LIONS ESPORTS</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 
 <style>
-
-*{box-sizing:border-box}
 
 body{
 margin:0;
@@ -18,75 +16,52 @@ color:white;
 
 .hero{
 height:100vh;
-background:url("poster.jpg") center/cover fixed;
+background:url("poster.jpg") center/cover no-repeat;
 display:flex;
-flex-direction:column;
-justify-content:center;
 align-items:center;
+justify-content:center;
 text-align:center;
 }
 
 .overlay{
-background:rgba(0,0,0,.7);
+position:absolute;
 width:100%;
 height:100%;
-position:absolute;
+background:rgba(0,0,0,.7);
 }
 
-.hero-content{
+.hero-inner{
 z-index:2;
 }
 
-.logo{
-font-size:45px;
-font-weight:bold;
-text-shadow:0 0 25px cyan;
-animation:glow 2s infinite;
+h1{
+font-size:48px;
+text-shadow:0 0 20px cyan;
 }
 
-@keyframes glow{
-50%{text-shadow:0 0 50px cyan}
-}
-
-.btn{
-padding:12px 28px;
+button{
+padding:12px 30px;
 border:none;
-border-radius:25px;
+border-radius:30px;
 background:#00ffd5;
 font-weight:bold;
-margin:8px;
 cursor:pointer;
+margin:10px;
 }
 
 .section{
-padding:40px 20px;
+padding:30px;
+max-width:900px;
+margin:auto;
 }
 
 .card{
-background:#0d1222;
+background:#0d1324;
 padding:20px;
 border-radius:15px;
-margin:15px auto;
-max-width:900px;
-box-shadow:0 0 25px #00ffd533;
+margin:15px 0;
+box-shadow:0 0 20px #00ffd533;
 }
-
-.status{
-display:flex;
-align-items:center;
-gap:10px;
-}
-
-.light{
-width:12px;
-height:12px;
-border-radius:50%;
-background:#00ff00;
-box-shadow:0 0 10px #00ff00;
-animation:pulse 1.5s infinite;
-}
-
-@keyframes pulse{50%{opacity:.3}}
 
 input{
 width:100%;
@@ -98,56 +73,19 @@ border:none;
 
 .hidden{display:none}
 
-.player-grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
-gap:15px;
+.light{
+width:12px;
+height:12px;
+border-radius:50%;
+background:#00ff00;
+box-shadow:0 0 15px #00ff00;
+display:inline-block;
+margin-right:6px;
 }
 
-.player{
-background:#111;
-padding:15px;
-border-radius:12px;
-text-align:center;
-transition:.3s;
-}
+.news{border-left:4px solid cyan;padding-left:10px;margin:8px 0}
 
-.player:hover{transform:scale(1.05)}
-
-.bracket{
-display:flex;
-justify-content:space-around;
-}
-
-.round{
-display:flex;
-flex-direction:column;
-gap:10px;
-}
-
-.match{
-background:#111;
-padding:10px;
-border-radius:8px;
-animation:float 2s infinite alternate;
-}
-
-@keyframes float{from{transform:translateY(0)}to{transform:translateY(-5px)}}
-
-.sponsors img{
-width:120px;
-margin:10px;
-filter:grayscale(1);
-}
-
-.countdown{
-font-size:24px;
-margin:10px;
-}
-
-.news{border-left:4px solid cyan;padding-left:10px;margin:10px}
-
-iframe{width:100%;height:250px;border-radius:15px}
+.countdown{font-size:22px;margin:10px}
 
 </style>
 </head>
@@ -156,14 +94,17 @@ iframe{width:100%;height:250px;border-radius:15px}
 
 <div class="hero">
 <div class="overlay"></div>
-<div class="hero-content">
-<div class="logo">PK LIONS ESPORTS</div>
-<p>PUBG Mobile Tournament Platform</p>
+
+<div class="hero-inner">
+<h1>PK LIONS ESPORTS</h1>
+<p>Last Circle Clash – Season 1</p>
 
 <div class="countdown" id="timer"></div>
 
-<button class="btn" onclick="openDash()">Tournament Dashboard</button>
-<a class="btn" href="https://chat.whatsapp.com/JLhkyWtPQbAE06StUBN8m2">Join WhatsApp</a>
+<button onclick="openRegister()">REGISTER NOW</button>
+
+<a href="https://chat.whatsapp.com/JLhkyWtPQbAE06StUBN8m2">
+<button>JOIN COMMUNITY</button></a>
 
 </div>
 </div>
@@ -171,80 +112,40 @@ iframe{width:100%;height:250px;border-radius:15px}
 <div class="section">
 
 <div class="card">
-<h2>Last Circle Clash – Season 1</h2>
-
-<div class="status">
-<div class="light"></div>
-<b>Registration Open</b>
-</div>
-
-<p>Prize Pool: <b>50,000 PKR</b></p>
-
+<span class="light"></span><b>Registration Open</b><br><br>
+Prize Pool: <b>50,000 PKR</b><br>
+Game: PUBG Mobile
 </div>
 
 <div class="card">
-<h3>📰 News</h3>
-<div class="news">🔥 Registration Open – 50K Prize Pool</div>
-<div class="news">📢 New Tournament Started</div>
-<div class="news">⏳ Upcoming Events Soon</div>
+<h3>News</h3>
+<div class="news">🔥 Registration Started – 50K Prize Pool</div>
+<div class="news">📢 PUBG Mobile Last Circle Clash Season 1</div>
+<div class="news">⏳ Event Coming Soon</div>
 </div>
 
-<div class="card">
-<h3>Featured Players</h3>
-<div class="player-grid">
-<div class="player">Player 1</div>
-<div class="player">Player 2</div>
-<div class="player">Player 3</div>
-<div class="player">Player 4</div>
-</div>
-</div>
+<div id="register" class="card hidden">
 
-<div class="card">
-<h3>Live Bracket</h3>
-<div class="bracket">
-<div class="round">
-<div class="match">Team A</div>
-<div class="match">Team B</div>
-</div>
-<div class="round">
-<div class="match">Winner</div>
-</div>
-</div>
-</div>
-
-<div class="card sponsors">
-<h3>Sponsors</h3>
-<img src="https://dummyimage.com/200x100/0ff/000&text=Sponsor">
-<img src="https://dummyimage.com/200x100/0ff/000&text=Sponsor">
-</div>
-
-<div class="card">
-<h3>Live Stream</h3>
-<iframe src="https://www.youtube.com/embed/jmbTUSMhR28"></iframe>
-</div>
-
-<div id="dashboard" class="card hidden">
-
-<h3>Team Registration</h3>
+<h2>Team Registration</h2>
 
 <input id="team" placeholder="Team Name">
-<input placeholder="Team Tag">
+<input id="tag" placeholder="Team Tag">
 
 <input placeholder="Player 1">
 <input placeholder="Player 2">
 <input placeholder="Player 3">
 <input placeholder="Player 4">
 
-<input placeholder="IGL WhatsApp">
-<input placeholder="Sponsor WhatsApp">
+<input id="igl" placeholder="IGL WhatsApp">
+<input id="sponsor" placeholder="Sponsor WhatsApp">
 
-<button class="btn" onclick="submitTeam()">Submit</button>
+<button onclick="submitForm()">Submit Registration</button>
 
 </div>
 
 <div id="success" class="card hidden">
 <h2>✅ Congratulations</h2>
-<p>Your registration has been submitted.</p>
+<p>Your team registration has been submitted.</p>
 <p>PK Lions will contact you soon.</p>
 </div>
 
@@ -252,29 +153,32 @@ iframe{width:100%;height:250px;border-radius:15px}
 
 <script>
 
-const GOOGLE_SCRIPT_URL="PASTE_YOUR_GOOGLE_APPS_SCRIPT_URL_HERE";
+const GOOGLE_SCRIPT="PASTE_YOUR_GOOGLE_SCRIPT_URL";
 
-function openDash(){
-dashboard.classList.remove("hidden");
+function openRegister(){
+document.getElementById("register").classList.remove("hidden");
 window.scrollTo(0,document.body.scrollHeight);
 }
 
-function submitTeam(){
+function submitForm(){
 
-fetch(GOOGLE_SCRIPT_URL,{
+fetch(GOOGLE_SCRIPT,{
 method:"POST",
 mode:"no-cors",
 headers:{"Content-Type":"application/json"},
 body:JSON.stringify({
-team:team.value
+team:team.value,
+tag:tag.value,
+igl:igl.value,
+sponsor:sponsor.value
 })
 });
 
-dashboard.classList.add("hidden");
-success.classList.remove("hidden");
+document.getElementById("register").classList.add("hidden");
+document.getElementById("success").classList.remove("hidden");
 }
 
-// Countdown
+// Countdown to Feb 20
 
 const target=new Date("Feb 20, 2026 00:00:00").getTime();
 
