@@ -28,6 +28,7 @@ input{width:100%; padding:10px; margin:6px 0; border-radius:10px; border:none;}
 .gallery img{width:100%; border-radius:10px;}
 .leaderboard-table{width:100%; border-collapse:collapse;}
 .leaderboard-table th, .leaderboard-table td{border:1px solid cyan; padding:8px; text-align:center;}
+.counter{font-size:20px; margin:10px 0; color:#00ffd5;}
 </style>
 </head>
 <body><div class="hero">
@@ -44,6 +45,7 @@ input{width:100%; padding:10px; margin:6px 0; border-radius:10px; border:none;}
 <div class="card">
 <span class="light"></span><b>Registration Open</b><br><br>
 Prize Pool: <b>50,000 PKR</b>
+<p class="counter">Registered Teams: <span id="regCount">0</span></p>
 </div>
 <div class="card">
 <h3>Latest News</h3>
@@ -117,6 +119,8 @@ Prize Pool: <b>50,000 PKR</b>
 PK LIONS ESPORTS © 2026
 </div><script>
 const SCRIPT_URL="https://script.google.com/macros/s/AKfycbyRONRicyN3pC3Q76JKNqJo-vuDzEpBg4v41_WIxBiyD1kuvxg9_5-IkGmnvhUaeapA/exec";
+let registrationCount = 0;
+
 function openDash(){
   const dash = document.getElementById("dash");
   if(dash){
@@ -124,30 +128,46 @@ function openDash(){
     window.scrollTo({ top: document.body.scrollHeight, behavior:"smooth" });
   }
 }
+
 function submit(){
-let team=document.getElementById("team").value;
-let tag=document.getElementById("tag").value;
-let p1=document.getElementById("p1").value;
-let p2=document.getElementById("p2").value;
-let p3=document.getElementById("p3").value;
-let p4=document.getElementById("p4").value;
-let igl=document.getElementById("igl").value;
-let sponsor=document.getElementById("sponsor").value;
-if(team=="" || p1==""){ alert("Please enter Team Name and Player 1"); return; }
-fetch(SCRIPT_URL,{ method:"POST", mode:"no-cors", headers:{"Content-Type":"application/json"}, body:JSON.stringify({team,tag,p1,p2,p3,p4,igl,sponsor}) });
-document.getElementById("dash").classList.add("hidden");
-document.getElementById("done").classList.remove("hidden");
+  let team=document.getElementById("team").value;
+  let p1=document.getElementById("p1").value;
+  if(team=="" || p1==""){ alert("Please enter Team Name and Player 1"); return; }
+
+  fetch(SCRIPT_URL,{ method:"POST", mode:"no-cors", headers:{"Content-Type":"application/json"}, body:JSON.stringify({
+    team:team,
+    tag:document.getElementById("tag").value,
+    p1:p1,
+    p2:document.getElementById("p2").value,
+    p3:document.getElementById("p3").value,
+    p4:document.getElementById("p4").value,
+    igl:document.getElementById("igl").value,
+    sponsor:document.getElementById("sponsor").value
+  })});
+
+  document.getElementById("dash").classList.add("hidden");
+  document.getElementById("done").classList.remove("hidden");
+
+  // Update registered teams count
+  registrationCount++;
+  document.getElementById("regCount").innerText = registrationCount;
 }
+
 const target=new Date("Feb 20, 2026 00:00:00").getTime();
-setInterval(()=>{let d=target-new Date().getTime();document.getElementById("timer").innerHTML=Math.floor(d/86400000)+"d "+Math.floor(d%86400000/3600000)+"h "+Math.floor(d%3600000/60000)+"m "+Math.floor(d%60000/1000)+"s";},1000);
+setInterval(()=>{
+  let d=target-new Date().getTime();
+  document.getElementById("timer").innerHTML=Math.floor(d/86400000)+"d "+Math.floor(d%86400000/3600000)+"h "+Math.floor(d%3600000/60000)+"m "+Math.floor(d%60000/1000)+"s";
+},1000);
+
 function calculatePoints(){
-let kills=parseInt(document.getElementById("kills").value)||0;
-let placement=parseInt(document.getElementById("placement").value)||0;
-let points = kills*10 + Math.max(0,100-placement);
-document.getElementById("pointsResult").innerText="Total Points: "+points;
-let leaderboard=document.getElementById("leaderboard");
-let newRow=leaderboard.insertRow();
-newRow.innerHTML=<td>${leaderboard.rows.length-1}</td><td>${document.getElementById("team").value || 'New Team'}</td><td>${points}</td>;
+  let kills=parseInt(document.getElementById("kills").value)||0;
+  let placement=parseInt(document.getElementById("placement").value)||0;
+  let points = kills*10 + Math.max(0,100-placement);
+  document.getElementById("pointsResult").innerText="Total Points: "+points;
+
+  let leaderboard=document.getElementById("leaderboard");
+  let newRow=leaderboard.insertRow();
+  newRow.innerHTML=<td>${leaderboard.rows.length-1}</td><td>${document.getElementById("team").value || 'New Team'}</td><td>${points}</td>;
 }
 </script></body>
 </html>
