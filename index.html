@@ -86,7 +86,7 @@ input{width:100%;padding:10px;margin:6px 0;border-radius:10px;border:none;}
     <input id="p4" placeholder="Player 4">
     <input id="igl" placeholder="IGL WhatsApp">
     <input id="sponsor" placeholder="Sponsor WhatsApp">
-    <button id="btnSubmit">Submit Registration</button>
+    <button id="btnSubmit">Register Team Now</button>
   </div>
 
   <div id="done" class="card hidden">
@@ -112,7 +112,7 @@ input{width:100%;padding:10px;margin:6px 0;border-radius:10px;border:none;}
   <div class="card">
     <h3>Team Dashboard (Login)</h3>
     <input id="loginTeam" placeholder="Enter Team Name">
-    <button id="btnDashboard">View Dashboard</button>
+    <button id="btnDashboard">View Team Dashboard</button>
     <div id="teamDashboard" class="dashboard-card hidden"></div>
   </div>
 
@@ -126,37 +126,29 @@ input{width:100%;padding:10px;margin:6px 0;border-radius:10px;border:none;}
 let registrationCount = 0;
 let registeredTeams = [];
 
-// Buttons
-document.getElementById("btnRegister").addEventListener("click", openDash);
-document.getElementById("btnSubmit").addEventListener("click", submitRegistration);
-document.getElementById("btnDashboard").addEventListener("click", showDashboard);
-
-function openDash() {
+// Correctly attaching buttons to JS
+document.getElementById("btnRegister").addEventListener("click", () => {
   document.getElementById("dash").classList.remove("hidden");
-  window.scrollTo({ top: document.getElementById("dash").offsetTop, behavior: "smooth" });
-}
+  document.getElementById("dash").scrollIntoView({behavior:"smooth"});
+});
 
-function submitRegistration() {
+document.getElementById("btnSubmit").addEventListener("click", () => {
   const teamName = document.getElementById("team").value.trim();
   const tag = document.getElementById("tag").value.trim();
   const p1 = document.getElementById("p1").value.trim();
+  if(!teamName || !p1){alert("Team Name اور Player 1 ضروری ہے"); return;}
   const p2 = document.getElementById("p2").value.trim();
   const p3 = document.getElementById("p3").value.trim();
   const p4 = document.getElementById("p4").value.trim();
   const igl = document.getElementById("igl").value.trim();
   const sponsor = document.getElementById("sponsor").value.trim();
 
-  if(!teamName || !p1){alert("Team Name اور Player 1 ضروری ہے"); return;}
-
   registrationCount++;
   document.getElementById("regCount").innerText = registrationCount;
-
   const groups = ["A","B","C","D"];
   const groupAssigned = groups[(registrationCount-1)%4];
 
-  const teamData = {teamName, tag, p1, p2, p3, p4, igl, sponsor, groupAssigned, points:0, matches:0};
-  registeredTeams.push(teamData);
-
+  registeredTeams.push({teamName, tag, p1, p2, p3, p4, igl, sponsor, groupAssigned, points:0, matches:0});
   updateTeamList();
   updateLeaderboard();
 
@@ -172,7 +164,23 @@ function submitRegistration() {
   document.getElementById("p4").value="";
   document.getElementById("igl").value="";
   document.getElementById("sponsor").value="";
-}
+});
+
+document.getElementById("btnDashboard").addEventListener("click", () => {
+  const name = document.getElementById("loginTeam").value.trim();
+  const team = registeredTeams.find(t=>t.teamName.toLowerCase()===name.toLowerCase());
+  const dash = document.getElementById("teamDashboard");
+  if(!team){alert("Team not found"); dash.classList.add("hidden"); return;}
+  dash.classList.remove("hidden");
+  dash.innerHTML=`<h3>${team.teamName} Dashboard</h3>
+                  <p>Group: ${team.groupAssigned}</p>
+                  <p>Players: ${team.p1}, ${team.p2}, ${team.p3}, ${team.p4}</p>
+                  <p>IGL: ${team.igl}</p>
+                  <p>Sponsor: ${team.sponsor}</p>
+                  <p>Matches Played: ${team.matches}</p>
+                  <p>Points: ${team.points}</p>
+                  <button onclick="addPoints('${team.teamName}')">Add Match & Points</button>`;
+});
 
 function updateTeamList(){
   const teamList = document.getElementById("teamList");
@@ -201,22 +209,6 @@ function updateLeaderboard(){
   });
 }
 
-function showDashboard(){
-  const name = document.getElementById("loginTeam").value.trim();
-  const team = registeredTeams.find(t=>t.teamName.toLowerCase()===name.toLowerCase());
-  const dash = document.getElementById("teamDashboard");
-  if(!team){alert("Team not found"); dash.classList.add("hidden"); return;}
-  dash.classList.remove("hidden");
-  dash.innerHTML=`<h3>${team.teamName} Dashboard</h3>
-                  <p>Group: ${team.groupAssigned}</p>
-                  <p>Players: ${team.p1}, ${team.p2}, ${team.p3}, ${team.p4}</p>
-                  <p>IGL: ${team.igl}</p>
-                  <p>Sponsor: ${team.sponsor}</p>
-                  <p>Matches Played: ${team.matches}</p>
-                  <p>Points: ${team.points}</p>
-                  <button onclick="addPoints('${team.teamName}')">Add Match & Points</button>`;
-}
-
 function addPoints(teamName){
   const team = registeredTeams.find(t=>t.teamName===teamName);
   if(!team) return;
@@ -225,7 +217,7 @@ function addPoints(teamName){
   team.points += points;
   team.matches += 1;
   updateLeaderboard();
-  showDashboard();
+  document.getElementById("btnDashboard").click(); // refresh dashboard
 }
 
 // Countdown
