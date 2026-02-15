@@ -1,284 +1,241 @@
 <!DOCTYPE html>
-<html>
+<html lang="ur">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>PK LIONS ESPORTS</title>
-<meta name="viewport" content="width=device-width">
-
 <style>
-
 *{box-sizing:border-box}
-
-body{
-margin:0;
-font-family:Arial,Helvetica,sans-serif;
-background:#050812;
-color:white;
-}
-
-/* HERO */
-
-.hero{
-height:100vh;
-background:url("https://drive.google.com/uc?export=view&id=1uAue7LhtvtddKM7JCW-1t1UPfrFhHSkx") center/cover no-repeat;
-display:flex;
-align-items:center;
-justify-content:center;
-position:relative;
-}
-
-.overlay{
-position:absolute;
-inset:0;
-background:rgba(0,0,0,.75);
-}
-
-.hero-inner{
-z-index:2;
-text-align:center;
-}
-
-.logo{
-width:120px;
-border-radius:50%;
-box-shadow:0 0 20px cyan;
-margin-bottom:10px;
-}
-
-h1{
-margin:0;
-font-size:44px;
-text-shadow:0 0 25px cyan;
-}
-
-button{
-padding:12px 28px;
-border:none;
-border-radius:30px;
-background:#00ffd5;
-font-weight:bold;
-cursor:pointer;
-margin:10px;
-}
-
-/* SECTIONS */
-
-.section{
-max-width:1000px;
-margin:auto;
-padding:20px;
-}
-
-.card{
-background:#0d1224;
-padding:20px;
-border-radius:15px;
-margin:15px 0;
-box-shadow:0 0 25px #00ffd533;
-}
-
-.light{
-width:12px;
-height:12px;
-border-radius:50%;
-background:#00ff00;
-display:inline-block;
-box-shadow:0 0 15px #00ff00;
-margin-right:6px;
-}
-
-input{
-width:100%;
-padding:10px;
-margin:6px 0;
-border-radius:10px;
-border:none;
-}
-
-.hidden{display:none}
-
-/* PLAYER CARDS */
-
-.players{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(120px,1fr));
-gap:12px;
-}
-
-.player{
-background:#111;
-padding:10px;
-border-radius:10px;
-text-align:center;
-transition:.3s;
-}
-
-.player:hover{
-transform:translateY(-5px);
-box-shadow:0 0 15px cyan;
-}
-
-/* BRACKET */
-
-.match{
-background:#111;
-padding:10px;
-border-radius:10px;
-margin:8px 0;
-animation:float 2s infinite alternate;
-}
-
-@keyframes float{
-to{transform:translateY(-6px)}
-}
-
-.news{
-border-left:4px solid cyan;
-padding-left:10px;
-margin:6px 0;
-}
-
-.countdown{
-font-size:22px;
-margin:10px 0;
-}
-
-.footer{
-text-align:center;
-opacity:.6;
-padding:20px;
-}
-
+body{margin:0;font-family:Arial,Helvetica,sans-serif;background:#050812;color:white;}
+.hero{height:90vh;background:#111 url("https://drive.google.com/uc?export=view&id=1uAue7LhtvtddKM7JCW-1t1UPfrFhHSkx") center/cover no-repeat;display:flex;align-items:center;justify-content:center;position:relative;}
+.overlay{position:absolute;inset:0;background:rgba(0,0,0,.75);}
+.hero-inner{z-index:2;text-align:center;}
+.logo{width:120px;border-radius:50%;box-shadow:0 0 20px cyan;margin-bottom:10px;}
+h1{margin:0;font-size:44px;text-shadow:0 0 25px cyan;}
+button{padding:12px 28px;border:none;border-radius:30px;background:#00ffd5;font-weight:bold;cursor:pointer;margin:10px;}
+.section{max-width:1000px;margin:auto;padding:20px;}
+.card{background:#0d1224;padding:20px;border-radius:15px;margin:15px 0;box-shadow:0 0 25px #00ffd533;}
+.light{width:12px;height:12px;border-radius:50%;background:#00ff00;display:inline-block;box-shadow:0 0 15px #00ff00;margin-right:6px;}
+input{width:100%;padding:10px;margin:6px 0;border-radius:10px;border:none;}
+.hidden{display:none;}
+.players{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:12px;}
+.player{background:#111;padding:10px;border-radius:10px;text-align:center;transition:.3s;}
+.player:hover{transform:translateY(-5px);box-shadow:0 0 15px cyan;}
+.match{background:#111;padding:10px;border-radius:10px;margin:8px 0;animation:float 2s infinite alternate;}
+@keyframes float{to{transform:translateY(-6px)}}
+.news{border-left:4px solid cyan;padding-left:10px;margin:6px 0;}
+.countdown{font-size:22px;margin:10px 0;}
+.footer{text-align:center;opacity:.6;padding:20px;}
+.team-card{background:#1a1f3a;padding:15px;margin:10px 0;border-radius:10px;box-shadow:0 0 15px cyan;}
+.poster{background:#111;padding:15px;margin:10px 0;border-radius:10px;text-align:center;box-shadow:0 0 15px cyan;}
+.dashboard-card{background:#111;padding:15px;margin:10px 0;border-radius:10px;box-shadow:0 0 15px cyan;}
 </style>
 </head>
-
 <body>
 
 <div class="hero">
-<div class="overlay"></div>
-
-<div class="hero-inner">
-
-<img class="logo" src="https://drive.google.com/uc?export=view&id=1uAue7LhtvtddKM7JCW-1t1UPfrFhHSkx">
-
-<h1>PK LIONS ESPORTS</h1>
-<p>Last Circle Clash – Season 1</p>
-
-<div class="countdown" id="timer"></div>
-
-<button onclick="openDash()">REGISTER NOW</button>
-
-<a href="https://chat.whatsapp.com/JLhkyWtPQbAE06StUBN8m2">
-<button>JOIN COMMUNITY</button></a>
-
-</div>
+  <div class="overlay"></div>
+  <div class="hero-inner">
+    <img class="logo" src="https://drive.google.com/uc?export=view&id=1uAue7LhtvtddKM7JCW-1t1UPfrFhHSkx">
+    <h1>PK LIONS ESPORTS</h1>
+    <p>Last Circle Clash – Season 1</p>
+    <div class="countdown" id="timer"></div>
+    <button onclick="openDash()">REGISTER NOW</button>
+    <a href="https://chat.whatsapp.com/JLhkyWtPQbAE06StUBN8m2"><button>JOIN COMMUNITY</button></a>
+  </div>
 </div>
 
 <div class="section">
 
-<div class="card">
-<span class="light"></span><b>Registration Open</b><br><br>
-Prize Pool: <b>50,000 PKR</b>
-</div>
+  <div class="card">
+    <span class="light"></span><b>Registration Open</b><br><br>
+    Prize Pool: <b>50,000 PKR</b>
+    <p>Total Teams Registered: <span id="regCount">0</span></p>
+  </div>
 
-<div class="card">
-<h3>Latest News</h3>
-<div class="news">🔥 Registration Started – 50K Prize Pool</div>
-<div class="news">📢 PUBG Mobile Last Circle Clash Season 1</div>
-<div class="news">⏳ Upcoming Matches Soon</div>
-</div>
+  <div class="card">
+    <h3>Latest News</h3>
+    <div class="news">🔥 Registration Started – 50K Prize Pool</div>
+    <div class="news">📢 PUBG Mobile Last Circle Clash Season 1</div>
+    <div class="news">⏳ Upcoming Matches Soon</div>
+  </div>
 
-<div class="card">
-<h3>Featured Players</h3>
-<div class="players">
-<div class="player">Player</div>
-<div class="player">Player</div>
-<div class="player">Player</div>
-<div class="player">Player</div>
-</div>
-</div>
+  <div class="card">
+    <h3>Featured Players</h3>
+    <div class="players">
+      <div class="player">Player 1</div>
+      <div class="player">Player 2</div>
+      <div class="player">Player 3</div>
+      <div class="player">Player 4</div>
+    </div>
+  </div>
 
-<div class="card">
-<h3>Live Bracket</h3>
-<div class="match">Team Alpha vs Team Bravo</div>
-<div class="match">Winner Advances</div>
-</div>
+  <div class="card">
+    <h3>Live Bracket</h3>
+    <div class="match">Team Alpha vs Team Bravo</div>
+    <div class="match">Winner Advances</div>
+  </div>
 
-<div id="dash" class="card hidden">
+  <div id="dash" class="card hidden">
+    <h2>Team Registration</h2>
+    <input id="team" placeholder="Team Name">
+    <input id="tag" placeholder="Team Tag">
+    <input id="p1" placeholder="Player 1">
+    <input id="p2" placeholder="Player 2">
+    <input id="p3" placeholder="Player 3">
+    <input id="p4" placeholder="Player 4">
+    <input id="igl" placeholder="IGL WhatsApp">
+    <input id="sponsor" placeholder="Sponsor WhatsApp">
+    <button onclick="submitRegistration()">Submit Registration</button>
+  </div>
 
-<h2>Team Registration</h2>
+  <div id="done" class="card hidden">
+    <h2>✅ Congratulations</h2>
+    <p>Your team registration has been submitted.</p>
+  </div>
 
-<input id="team" placeholder="Team Name">
-<input id="tag" placeholder="Team Tag">
+  <div class="card">
+    <h3>Registered Teams</h3>
+    <div id="teamList"></div>
+  </div>
 
-<input id="p1" placeholder="Player 1">
-<input id="p2" placeholder="Player 2">
-<input id="p3" placeholder="Player 3">
-<input id="p4" placeholder="Player 4">
+  <div class="card">
+    <h3>Upcoming Tournament Poster</h3>
+    <div class="poster">Poster will be uploaded here in future</div>
+  </div>
 
-<input id="igl" placeholder="IGL WhatsApp">
-<input id="sponsor" placeholder="Sponsor WhatsApp">
+  <div class="card">
+    <h3>Leaderboard</h3>
+    <div id="leaderboard"></div>
+  </div>
 
-<button onclick="submit()">Submit Registration</button>
-
-</div>
-
-<div id="done" class="card hidden">
-<h2>✅ Congratulations</h2>
-<p>Your team registration has been submitted.</p>
-<p>PK Lions will contact you soon.</p>
-</div>
+  <div class="card">
+    <h3>Team Dashboard (Login)</h3>
+    <input id="loginTeam" placeholder="Enter Team Name">
+    <button onclick="showDashboard()">View Dashboard</button>
+    <div id="teamDashboard" class="dashboard-card hidden"></div>
+  </div>
 
 </div>
 
 <div class="footer">
-PK LIONS ESPORTS © 2026
+  PK LIONS ESPORTS © 2026
 </div>
 
 <script>
+let registrationCount = 0;
+let registeredTeams = [];
 
-// YOUR GOOGLE SHEET SCRIPT
-const SCRIPT_URL="https://script.google.com/macros/s/AKfycbyRONRicyN3pC3Q76JKNqJo-vuDzEpBg4v41_WIxBiyD1kuvxg9_5-IkGmnvhUaeapA/exec";
-
-function openDash(){
-dash.classList.remove("hidden");
-window.scrollTo(0,document.body.scrollHeight);
+function openDash() {
+  document.getElementById("dash").classList.remove("hidden");
+  window.scrollTo({ top: document.getElementById("dash").offsetTop, behavior: "smooth" });
 }
 
-function submit(){
+function submitRegistration() {
+  const teamName = document.getElementById("team").value.trim();
+  const tag = document.getElementById("tag").value.trim();
+  const p1 = document.getElementById("p1").value.trim();
+  const p2 = document.getElementById("p2").value.trim();
+  const p3 = document.getElementById("p3").value.trim();
+  const p4 = document.getElementById("p4").value.trim();
+  const igl = document.getElementById("igl").value.trim();
+  const sponsor = document.getElementById("sponsor").value.trim();
 
-fetch(SCRIPT_URL,{
-method:"POST",
-mode:"no-cors",
-body:JSON.stringify({
-team:team.value,
-tag:tag.value,
-p1:p1.value,
-p2:p2.value,
-p3:p3.value,
-p4:p4.value,
-igl:igl.value,
-sponsor:sponsor.value
-})
-});
+  if(!teamName || !p1){alert("Team Name اور Player 1 ضروری ہے"); return;}
 
-dash.classList.add("hidden");
-done.classList.remove("hidden");
+  registrationCount++;
+  document.getElementById("regCount").innerText = registrationCount;
+
+  const groups = ["A","B","C","D"];
+  const groupAssigned = groups[(registrationCount-1)%4];
+
+  const teamData = {teamName, tag, p1, p2, p3, p4, igl, sponsor, groupAssigned, points:0, matches:0};
+  registeredTeams.push(teamData);
+
+  updateTeamList();
+  updateLeaderboard();
+
+  document.getElementById("dash").classList.add("hidden");
+  document.getElementById("done").classList.remove("hidden");
+  setTimeout(()=>{document.getElementById("done").classList.add("hidden");},3000);
+
+  document.getElementById("team").value="";
+  document.getElementById("tag").value="";
+  document.getElementById("p1").value="";
+  document.getElementById("p2").value="";
+  document.getElementById("p3").value="";
+  document.getElementById("p4").value="";
+  document.getElementById("igl").value="";
+  document.getElementById("sponsor").value="";
 }
 
-// COUNTDOWN FEB 20
+function updateTeamList(){
+  const teamList = document.getElementById("teamList");
+  teamList.innerHTML="";
+  registeredTeams.forEach(t=>{
+    const div = document.createElement("div");
+    div.className="team-card";
+    div.innerHTML=`<b>Team:</b> ${t.teamName} (${t.tag})<br>
+                   <b>Group:</b> ${t.groupAssigned}<br>
+                   <b>Players:</b> ${t.p1}, ${t.p2}, ${t.p3}, ${t.p4}<br>
+                   <b>IGL:</b> ${t.igl}<br>
+                   <b>Sponsor:</b> ${t.sponsor}`;
+    teamList.appendChild(div);
+  });
+}
 
-const target=new Date("Feb 20, 2026 00:00:00").getTime();
+function updateLeaderboard(){
+  const lb = document.getElementById("leaderboard");
+  lb.innerHTML="";
+  const sorted = [...registeredTeams].sort((a,b)=>b.points-a.points);
+  sorted.forEach((t,i)=>{
+    const div = document.createElement("div");
+    div.className="team-card";
+    div.innerHTML=${i+1}. ${t.teamName} - ${t.points} Points - Matches: ${t.matches};
+    lb.appendChild(div);
+  });
+}
 
+// Team Dashboard Login
+function showDashboard(){
+  const name = document.getElementById("loginTeam").value.trim();
+  const team = registeredTeams.find(t=>t.teamName.toLowerCase()===name.toLowerCase());
+  const dash = document.getElementById("teamDashboard");
+  if(!team){alert("Team not found"); dash.classList.add("hidden"); return;}
+  dash.classList.remove("hidden");
+  dash.innerHTML=`<h3>${team.teamName} Dashboard</h3>
+                  <p>Group: ${team.groupAssigned}</p>
+                  <p>Players: ${team.p1}, ${team.p2}, ${team.p3}, ${team.p4}</p>
+                  <p>IGL: ${team.igl}</p>
+                  <p>Sponsor: ${team.sponsor}</p>
+                  <p>Matches Played: ${team.matches}</p>
+                  <p>Points: ${team.points}</p>
+                  <button onclick="addPoints('${team.teamName}')">Add Match & Points</button>`;
+}
+
+function addPoints(teamName){
+  const team = registeredTeams.find(t=>t.teamName===teamName);
+  if(!team) return;
+  const points = parseInt(prompt("یہاں ٹیم کے میچ کے پوائنٹس ڈالیں:"));
+  if(isNaN(points)){alert("صحیح نمبر ڈالیں"); return;}
+  team.points += points;
+  team.matches += 1;
+  updateLeaderboard();
+  showDashboard();
+}
+
+// Countdown
+const targetDate = new Date("Feb 20, 2026 00:00:00").getTime();
 setInterval(()=>{
-let d=target-new Date().getTime();
-timer.innerHTML=
-Math.floor(d/86400000)+"d "+
-Math.floor(d%86400000/3600000)+"h "+
-Math.floor(d%3600000/60000)+"m "+
-Math.floor(d%60000/1000)+"s";
+  const now = new Date().getTime();
+  const diff = targetDate - now;
+  if(diff<0){document.getElementById("timer").innerText="Tournament Started"; return;}
+  const d=Math.floor(diff/86400000);
+  const h=Math.floor(diff%86400000/3600000);
+  const m=Math.floor(diff%3600000/60000);
+  const s=Math.floor(diff%60000/1000);
+  document.getElementById("timer").innerText=${d}d ${h}h ${m}m ${s}s;
 },1000);
-
 </script>
 
 </body>
