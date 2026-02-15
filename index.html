@@ -1,285 +1,136 @@
-<!DOCTYPE html>
-<html>
+<!DOCTYPE html><html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>PK LIONS ESPORTS</title>
-<meta name="viewport" content="width=device-width">
-
-<style>
-
-*{box-sizing:border-box}
-
-body{
-margin:0;
-font-family:Arial,Helvetica,sans-serif;
-background:#050812;
-color:white;
-}
-
-/* HERO */
-
-.hero{
-height:100vh;
-background:url("https://drive.google.com/uc?export=view&id=1uAue7LhtvtddKM7JCW-1t1UPfrFhHSkx") center/cover no-repeat;
-display:flex;
-align-items:center;
-justify-content:center;
-position:relative;
-}
-
-.overlay{
-position:absolute;
-inset:0;
-background:rgba(0,0,0,.75);
-}
-
-.hero-inner{
-z-index:2;
-text-align:center;
-}
-
-.logo{
-width:120px;
-border-radius:50%;
-box-shadow:0 0 20px cyan;
-margin-bottom:10px;
-}
-
-h1{
-margin:0;
-font-size:44px;
-text-shadow:0 0 25px cyan;
-}
-
-button{
-padding:12px 28px;
-border:none;
-border-radius:30px;
-background:#00ffd5;
-font-weight:bold;
-cursor:pointer;
-margin:10px;
-}
-
-/* SECTIONS */
-
-.section{
-max-width:1000px;
-margin:auto;
-padding:20px;
-}
-
-.card{
-background:#0d1224;
-padding:20px;
-border-radius:15px;
-margin:15px 0;
-box-shadow:0 0 25px #00ffd533;
-}
-
-.light{
-width:12px;
-height:12px;
-border-radius:50%;
-background:#00ff00;
-display:inline-block;
-box-shadow:0 0 15px #00ff00;
-margin-right:6px;
-}
-
-input{
-width:100%;
-padding:10px;
-margin:6px 0;
-border-radius:10px;
-border:none;
-}
-
-.hidden{display:none}
-
-/* PLAYER CARDS */
-
-.players{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(120px,1fr));
-gap:12px;
-}
-
-.player{
-background:#111;
-padding:10px;
-border-radius:10px;
-text-align:center;
-transition:.3s;
-}
-
-.player:hover{
-transform:translateY(-5px);
-box-shadow:0 0 15px cyan;
-}
-
-/* BRACKET */
-
-.match{
-background:#111;
-padding:10px;
-border-radius:10px;
-margin:8px 0;
-animation:float 2s infinite alternate;
-}
-
-@keyframes float{
-to{transform:translateY(-6px)}
-}
-
-.news{
-border-left:4px solid cyan;
-padding-left:10px;
-margin:6px 0;
-}
-
-.countdown{
-font-size:22px;
-margin:10px 0;
-}
-
-.footer{
-text-align:center;
-opacity:.6;
-padding:20px;
-}
-
-</style>
-</head>
-
-<body>
-
-<div class="hero">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PK LIONS ESPORTS</title><style>
+*{box-sizing:border-box; margin:0; padding:0; font-family:Arial,Helvetica,sans-serif;}
+body{background:#050812; color:white;}
+button{padding:12px 28px; border:none; border-radius:30px; background:#00ffd5; font-weight:bold; cursor:pointer; margin:10px; min-height:48px; touch-action:manipulation;}
+.section{max-width:1000px; margin:auto; padding:20px;}
+.card{background:#0d1224; padding:20px; border-radius:15px; margin:15px 0; box-shadow:0 0 25px #00ffd533;}
+.hero{height:100vh; background:url("https://drive.google.com/uc?export=view&id=1uAue7LhtvtddKM7JCW-1t1UPfrFhHSkx") center/cover no-repeat; display:flex; align-items:center; justify-content:center; position:relative;}
+.overlay{position:absolute; inset:0; background:rgba(0,0,0,.75);}
+.hero-inner{z-index:2; text-align:center;}
+.logo{width:120px; border-radius:50%; box-shadow:0 0 20px cyan; margin-bottom:10px;}
+h1{text-shadow:0 0 25px cyan; font-size:44px;}
+.players{display:grid; grid-template-columns:repeat(auto-fit,minmax(120px,1fr)); gap:12px;}
+.player{background:#111; padding:10px; border-radius:10px; text-align:center; transition:.3s;}
+.player:hover{transform:translateY(-5px); box-shadow:0 0 15px cyan;}
+.match{background:#111; padding:10px; border-radius:10px; margin:8px 0; animation:float 2s infinite alternate;}
+@keyframes float{to{transform:translateY(-6px)}}
+.news{border-left:4px solid cyan; padding-left:10px; margin:6px 0;}
+.countdown{font-size:22px; margin:10px 0;}
+input{width:100%; padding:10px; margin:6px 0; border-radius:10px; border:none;}
+.hidden{display:none;}
+.footer{text-align:center; opacity:.6; padding:20px;}
+.gallery{display:grid; grid-template-columns:repeat(auto-fit,minmax(120px,1fr)); gap:10px;}
+.gallery img{width:100%; border-radius:10px;}
+.leaderboard-table{width:100%; border-collapse:collapse;}
+.leaderboard-table th, .leaderboard-table td{border:1px solid cyan; padding:8px; text-align:center;}
+</style></head>
+<body><div class="hero">
 <div class="overlay"></div>
-
 <div class="hero-inner">
-
 <img class="logo" src="https://drive.google.com/uc?export=view&id=1uAue7LhtvtddKM7JCW-1t1UPfrFhHSkx">
-
 <h1>PK LIONS ESPORTS</h1>
 <p>Last Circle Clash – Season 1</p>
-
 <div class="countdown" id="timer"></div>
-
 <button onclick="openDash()">REGISTER NOW</button>
-
-<a href="https://chat.whatsapp.com/JLhkyWtPQbAE06StUBN8m2">
-<button>JOIN COMMUNITY</button></a>
-
+<a href="https://chat.whatsapp.com/JLhkyWtPQbAE06StUBN8m2"><button>JOIN COMMUNITY</button></a>
 </div>
-</div>
-
-<div class="section">
-
+</div><div class="section">
 <div class="card">
 <span class="light"></span><b>Registration Open</b><br><br>
 Prize Pool: <b>50,000 PKR</b>
-</div>
-
-<div class="card">
+</div><div class="card">
 <h3>Latest News</h3>
 <div class="news">🔥 Registration Started – 50K Prize Pool</div>
 <div class="news">📢 PUBG Mobile Last Circle Clash Season 1</div>
 <div class="news">⏳ Upcoming Matches Soon</div>
-</div>
-
-<div class="card">
+</div><div class="card">
 <h3>Featured Players</h3>
 <div class="players">
-<div class="player">Player</div>
-<div class="player">Player</div>
-<div class="player">Player</div>
-<div class="player">Player</div>
+<div class="player">Player 1</div>
+<div class="player">Player 2</div>
+<div class="player">Player 3</div>
+<div class="player">Player 4</div>
 </div>
-</div>
-
-<div class="card">
+</div><div class="card">
 <h3>Live Bracket</h3>
 <div class="match">Team Alpha vs Team Bravo</div>
 <div class="match">Winner Advances</div>
+</div><div class="card">
+<h3>Upcoming Events</h3>
+<div class="news">Event 1: Online Qualifiers</div>
+<div class="news">Event 2: Semi Finals</div>
+<div class="news">Event 3: Grand Finale</div>
+</div><div class="card">
+<h3>Poster Gallery</h3>
+<div class="gallery">
+<img src="https://via.placeholder.com/150x200?text=Poster+1">
+<img src="https://via.placeholder.com/150x200?text=Poster+2">
+<img src="https://via.placeholder.com/150x200?text=Poster+3">
+<img src="https://via.placeholder.com/150x200?text=Poster+4">
 </div>
-
-<div id="dash" class="card hidden">
-
+</div><div id="dash" class="card hidden">
 <h2>Team Registration</h2>
-
 <input id="team" placeholder="Team Name">
 <input id="tag" placeholder="Team Tag">
-
 <input id="p1" placeholder="Player 1">
 <input id="p2" placeholder="Player 2">
 <input id="p3" placeholder="Player 3">
 <input id="p4" placeholder="Player 4">
-
 <input id="igl" placeholder="IGL WhatsApp">
 <input id="sponsor" placeholder="Sponsor WhatsApp">
-
 <button onclick="submit()">Submit Registration</button>
-
-</div>
-
-<div id="done" class="card hidden">
+</div><div id="done" class="card hidden">
 <h2>✅ Congratulations</h2>
 <p>Your team registration has been submitted.</p>
 <p>PK Lions will contact you soon.</p>
-</div>
-
-</div>
-
-<div class="footer">
+</div><div class="card">
+<h3>PUBG Points Calculator</h3>
+<input id="kills" placeholder="Total Kills">
+<input id="placement" placeholder="Placement (1st,2nd, etc)">
+<button onclick="calculatePoints()">Calculate Points</button>
+<p id="pointsResult"></p>
+</div><div class="card">
+<h3>Automatic Leaderboard</h3>
+<table class="leaderboard-table" id="leaderboard">
+<tr><th>Rank</th><th>Team</th><th>Points</th></tr>
+<tr><td>1</td><td>Team Alpha</td><td>120</td></tr>
+<tr><td>2</td><td>Team Bravo</td><td>110</td></tr>
+<tr><td>3</td><td>Team Charlie</td><td>95</td></tr>
+</table>
+</div></div><div class="footer">
 PK LIONS ESPORTS © 2026
-</div>
-
-<script>
-
-// YOUR GOOGLE SHEET SCRIPT
+</div><script>
 const SCRIPT_URL="https://script.google.com/macros/s/AKfycbyRONRicyN3pC3Q76JKNqJo-vuDzEpBg4v41_WIxBiyD1kuvxg9_5-IkGmnvhUaeapA/exec";
-
-function openDash(){
-dash.classList.remove("hidden");
-window.scrollTo(0,document.body.scrollHeight);
-}
-
+function openDash(){document.getElementById("dash").classList.remove("hidden");window.scrollTo({ top: document.body.scrollHeight, behavior:"smooth" });}
 function submit(){
-
-fetch(SCRIPT_URL,{
-method:"POST",
-mode:"no-cors",
-body:JSON.stringify({
-team:team.value,
-tag:tag.value,
-p1:p1.value,
-p2:p2.value,
-p3:p3.value,
-p4:p4.value,
-igl:igl.value,
-sponsor:sponsor.value
-})
-});
-
-dash.classList.add("hidden");
-done.classList.remove("hidden");
+let team=document.getElementById("team").value;
+let tag=document.getElementById("tag").value;
+let p1=document.getElementById("p1").value;
+let p2=document.getElementById("p2").value;
+let p3=document.getElementById("p3").value;
+let p4=document.getElementById("p4").value;
+let igl=document.getElementById("igl").value;
+let sponsor=document.getElementById("sponsor").value;
+if(team=="" || p1==""){ alert("Please enter Team Name and Player 1"); return; }
+fetch(SCRIPT_URL,{ method:"POST", mode:"no-cors", headers:{"Content-Type":"application/json"}, body:JSON.stringify({team,tag,p1,p2,p3,p4,igl,sponsor}) });
+document.getElementById("dash").classList.add("hidden");
+document.getElementById("done").classList.remove("hidden");
 }
-
-// COUNTDOWN FEB 20
-
 const target=new Date("Feb 20, 2026 00:00:00").getTime();
-
-setInterval(()=>{
-let d=target-new Date().getTime();
-timer.innerHTML=
-Math.floor(d/86400000)+"d "+
-Math.floor(d%86400000/3600000)+"h "+
-Math.floor(d%3600000/60000)+"m "+
-Math.floor(d%60000/1000)+"s";
-},1000);
-
-</script>
-
-</body>
+setInterval(()=>{let d=target-new Date().getTime();document.getElementById("timer").innerHTML=Math.floor(d/86400000)+"d "+Math.floor(d%86400000/3600000)+"h "+Math.floor(d%3600000/60000)+"m "+Math.floor(d%60000/1000)+"s";},1000);
+function calculatePoints(){
+let kills=parseInt(document.getElementById("kills").value)||0;
+let placement=parseInt(document.getElementById("placement").value)||0;
+let points = kills*10 + Math.max(0,100-placement);
+document.getElementById("pointsResult").innerText="Total Points: "+points;
+// Update leaderboard dynamically
+let leaderboard=document.getElementById("leaderboard");
+let newRow=leaderboard.insertRow();
+newRow.innerHTML=<td>${leaderboard.rows.length-1}</td><td>${document.getElementById("team").value || 'New Team'}</td><td>${points}</td>;
+}
+</script></body>
 </html>
