@@ -40,7 +40,7 @@ input{width:100%;padding:10px;margin:6px 0;border-radius:10px;border:none;}
     <h1>PK LIONS ESPORTS</h1>
     <p>Last Circle Clash – Season 1</p>
     <div class="countdown" id="timer"></div>
-    <button onclick="openDash()">REGISTER NOW</button>
+    <button id="btnRegister">REGISTER NOW</button>
     <a href="https://chat.whatsapp.com/JLhkyWtPQbAE06StUBN8m2"><button>JOIN COMMUNITY</button></a>
   </div>
 </div>
@@ -86,7 +86,7 @@ input{width:100%;padding:10px;margin:6px 0;border-radius:10px;border:none;}
     <input id="p4" placeholder="Player 4">
     <input id="igl" placeholder="IGL WhatsApp">
     <input id="sponsor" placeholder="Sponsor WhatsApp">
-    <button onclick="submitRegistration()">Submit Registration</button>
+    <button id="btnSubmit">Submit Registration</button>
   </div>
 
   <div id="done" class="card hidden">
@@ -112,7 +112,7 @@ input{width:100%;padding:10px;margin:6px 0;border-radius:10px;border:none;}
   <div class="card">
     <h3>Team Dashboard (Login)</h3>
     <input id="loginTeam" placeholder="Enter Team Name">
-    <button onclick="showDashboard()">View Dashboard</button>
+    <button id="btnDashboard">View Dashboard</button>
     <div id="teamDashboard" class="dashboard-card hidden"></div>
   </div>
 
@@ -125,6 +125,11 @@ input{width:100%;padding:10px;margin:6px 0;border-radius:10px;border:none;}
 <script>
 let registrationCount = 0;
 let registeredTeams = [];
+
+// Buttons
+document.getElementById("btnRegister").addEventListener("click", openDash);
+document.getElementById("btnSubmit").addEventListener("click", submitRegistration);
+document.getElementById("btnDashboard").addEventListener("click", showDashboard);
 
 function openDash() {
   document.getElementById("dash").classList.remove("hidden");
@@ -196,7 +201,6 @@ function updateLeaderboard(){
   });
 }
 
-// Team Dashboard Login
 function showDashboard(){
   const name = document.getElementById("loginTeam").value.trim();
   const team = registeredTeams.find(t=>t.teamName.toLowerCase()===name.toLowerCase());
