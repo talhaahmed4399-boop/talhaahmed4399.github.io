@@ -6,9 +6,7 @@
 <meta name="viewport" content="width=device-width">
 
 <style>
-
 *{box-sizing:border-box}
-
 body{
 margin:0;
 font-family:Arial,Helvetica,sans-serif;
@@ -17,7 +15,6 @@ color:white;
 }
 
 /* HERO */
-
 .hero{
 height:100vh;
 background:url("https://drive.google.com/uc?export=view&id=1uAue7LhtvtddKM7JCW-1t1UPfrFhHSkx") center/cover no-repeat;
@@ -26,31 +23,26 @@ align-items:center;
 justify-content:center;
 position:relative;
 }
-
 .overlay{
 position:absolute;
 inset:0;
 background:rgba(0,0,0,.75);
 }
-
 .hero-inner{
 z-index:2;
 text-align:center;
 }
-
 .logo{
 width:120px;
 border-radius:50%;
 box-shadow:0 0 20px cyan;
 margin-bottom:10px;
 }
-
 h1{
 margin:0;
 font-size:44px;
 text-shadow:0 0 25px cyan;
 }
-
 button{
 padding:12px 28px;
 border:none;
@@ -62,13 +54,11 @@ margin:10px;
 }
 
 /* SECTIONS */
-
 .section{
 max-width:1000px;
 margin:auto;
 padding:20px;
 }
-
 .card{
 background:#0d1224;
 padding:20px;
@@ -76,7 +66,6 @@ border-radius:15px;
 margin:15px 0;
 box-shadow:0 0 25px #00ffd533;
 }
-
 .light{
 width:12px;
 height:12px;
@@ -86,7 +75,6 @@ display:inline-block;
 box-shadow:0 0 15px #00ff00;
 margin-right:6px;
 }
-
 input{
 width:100%;
 padding:10px;
@@ -94,17 +82,14 @@ margin:6px 0;
 border-radius:10px;
 border:none;
 }
-
 .hidden{display:none}
 
 /* PLAYER CARDS */
-
 .players{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(120px,1fr));
 gap:12px;
 }
-
 .player{
 background:#111;
 padding:10px;
@@ -112,14 +97,12 @@ border-radius:10px;
 text-align:center;
 transition:.3s;
 }
-
 .player:hover{
 transform:translateY(-5px);
 box-shadow:0 0 15px cyan;
 }
 
 /* BRACKET */
-
 .match{
 background:#111;
 padding:10px;
@@ -127,7 +110,6 @@ border-radius:10px;
 margin:8px 0;
 animation:float 2s infinite alternate;
 }
-
 @keyframes float{
 to{transform:translateY(-6px)}
 }
@@ -137,50 +119,42 @@ border-left:4px solid cyan;
 padding-left:10px;
 margin:6px 0;
 }
-
 .countdown{
 font-size:22px;
 margin:10px 0;
 }
-
 .footer{
 text-align:center;
 opacity:.6;
 padding:20px;
 }
-
 </style>
 </head>
-
 <body>
 
+<!-- HERO -->
 <div class="hero">
 <div class="overlay"></div>
-
 <div class="hero-inner">
-
 <img class="logo" src="https://drive.google.com/uc?export=view&id=1uAue7LhtvtddKM7JCW-1t1UPfrFhHSkx">
-
 <h1>PK LIONS ESPORTS</h1>
 <p>Last Circle Clash – Season 1</p>
-
 <div class="countdown" id="timer"></div>
-
 <button onclick="openDash()">REGISTER NOW</button>
-
 <a href="https://chat.whatsapp.com/JLhkyWtPQbAE06StUBN8m2">
 <button>JOIN COMMUNITY</button></a>
-
 </div>
 </div>
 
 <div class="section">
 
+<!-- Registration Info -->
 <div class="card">
 <span class="light"></span><b>Registration Open</b><br><br>
 Prize Pool: <b>50,000 PKR</b>
 </div>
 
+<!-- Latest News -->
 <div class="card">
 <h3>Latest News</h3>
 <div class="news">🔥 Registration Started – 50K Prize Pool</div>
@@ -188,45 +162,76 @@ Prize Pool: <b>50,000 PKR</b>
 <div class="news">⏳ Upcoming Matches Soon</div>
 </div>
 
+<!-- Featured Players -->
 <div class="card">
 <h3>Featured Players</h3>
 <div class="players">
-<div class="player">Player</div>
-<div class="player">Player</div>
-<div class="player">Player</div>
-<div class="player">Player</div>
+<div class="player">Player 1</div>
+<div class="player">Player 2</div>
+<div class="player">Player 3</div>
+<div class="player">Player 4</div>
 </div>
 </div>
 
+<!-- Live Bracket -->
 <div class="card">
 <h3>Live Bracket</h3>
 <div class="match">Team Alpha vs Team Bravo</div>
 <div class="match">Winner Advances</div>
 </div>
 
+<!-- Registration Form -->
 <div id="dash" class="card hidden">
-
 <h2>Team Registration</h2>
-
 <input id="team" placeholder="Team Name">
 <input id="tag" placeholder="Team Tag">
-
 <input id="p1" placeholder="Player 1">
 <input id="p2" placeholder="Player 2">
 <input id="p3" placeholder="Player 3">
 <input id="p4" placeholder="Player 4">
-
 <input id="igl" placeholder="IGL WhatsApp">
 <input id="sponsor" placeholder="Sponsor WhatsApp">
-
 <button onclick="submit()">Submit Registration</button>
-
 </div>
 
 <div id="done" class="card hidden">
 <h2>✅ Congratulations</h2>
 <p>Your team registration has been submitted.</p>
 <p>PK Lions will contact you soon.</p>
+</div>
+
+<!-- NEW SECTION: Registered Teams & Stats -->
+<div class="card" id="registeredTeamsCard">
+<h3>Registered Teams</h3>
+<ul id="registeredTeams"></ul>
+</div>
+
+<div class="card" id="teamStatsCard">
+<h3>Team Stats</h3>
+<p>Total Teams: <span id="totalTeams">0</span></p>
+<p>Total Players: <span id="totalPlayers">0</span></p>
+</div>
+
+<div class="card" id="addRosterCard">
+<h3>Add / Update Team Roster</h3>
+<input id="teamSearch" placeholder="Enter Your Team Name">
+<input id="newPlayer" placeholder="Add Player Name">
+<button onclick="addPlayer()">Add Player</button>
+<ul id="rosterList"></ul>
+</div>
+
+<div class="card" id="recentMatchesCard">
+<h3>Recent Matches</h3>
+<ul id="recentMatches">
+<li>Team Alpha 2-1 Team Bravo</li>
+<li>Team Charlie 0-2 Team Delta</li>
+</ul>
+</div>
+
+<div class="card" id="searchTeamsCard">
+<h3>Search Teams</h3>
+<input id="searchInput" placeholder="Search team">
+<ul id="searchResults"></ul>
 </div>
 
 </div>
@@ -236,49 +241,146 @@ PK LIONS ESPORTS © 2026
 </div>
 
 <script>
-
-// YOUR GOOGLE SHEET SCRIPT
+// GOOGLE SHEET URL
 const SCRIPT_URL="https://script.google.com/macros/s/AKfycbyRONRicyN3pC3Q76JKNqJo-vuDzEpBg4v41_WIxBiyD1kuvxg9_5-IkGmnvhUaeapA/exec";
 
+const dash = document.getElementById("dash");
+const done = document.getElementById("done");
+
+// Elements
+const registeredTeamsEl = document.getElementById("registeredTeams");
+const totalTeamsEl = document.getElementById("totalTeams");
+const totalPlayersEl = document.getElementById("totalPlayers");
+const rosterListEl = document.getElementById("rosterList");
+const searchInputEl = document.getElementById("searchInput");
+const searchResultsEl = document.getElementById("searchResults");
+const teamSearchEl = document.getElementById("teamSearch");
+const newPlayerEl = document.getElementById("newPlayer");
+
+// Local Data
+let teamsData = [];
+
+// Open Dashboard
 function openDash(){
-dash.classList.remove("hidden");
-window.scrollTo(0,document.body.scrollHeight);
+    dash.classList.remove("hidden");
+    window.scrollTo(0,document.body.scrollHeight);
 }
 
+// Submit Registration
 function submit(){
+    const data = {
+        team:team.value,
+        tag:tag.value,
+        p1:p1.value,
+        p2:p2.value,
+        p3:p3.value,
+        p4:p4.value,
+        igl:igl.value,
+        sponsor:sponsor.value
+    };
 
-fetch(SCRIPT_URL,{
-method:"POST",
-mode:"no-cors",
-body:JSON.stringify({
-team:team.value,
-tag:tag.value,
-p1:p1.value,
-p2:p2.value,
-p3:p3.value,
-p4:p4.value,
-igl:igl.value,
-sponsor:sponsor.value
-})
+    fetch(SCRIPT_URL,{
+        method:"POST",
+        mode:"no-cors",
+        body: JSON.stringify(data)
+    });
+
+    // Add locally
+    teamsData.push({
+        team: data.team,
+        roster:[data.p1,data.p2,data.p3,data.p4]
+    });
+
+    updateTeams();
+    dash.classList.add("hidden");
+    done.classList.remove("hidden");
+}
+
+// Fetch Teams from Sheet
+async function fetchTeams(){
+    try{
+        const res = await fetch(SCRIPT_URL + "?action=read");
+        const json = await res.json();
+        teamsData = json.map(t => ({
+            team: t.team,
+            roster: [t.p1,t.p2,t.p3,t.p4]
+        }));
+        updateTeams();
+    }catch(err){
+        console.log("Unable to fetch sheet data:", err);
+    }
+}
+
+// Update Registered Teams & Stats
+function updateTeams(){
+    registeredTeamsEl.innerHTML="";
+    rosterListEl.innerHTML="";
+    searchResultsEl.innerHTML="";
+
+    let totalPlayers = 0;
+    teamsData.forEach(t=>{
+        const li = document.createElement("li");
+        li.textContent = t.team + " [" + t.roster.join(", ") + "]";
+        registeredTeamsEl.appendChild(li);
+        totalPlayers += t.roster.length;
+    });
+
+    totalTeamsEl.textContent = teamsData.length;
+    totalPlayersEl.textContent = totalPlayers;
+}
+
+// Add Player to Roster
+function addPlayer(){
+    const teamName = teamSearchEl.value.trim();
+    const playerName = newPlayerEl.value.trim();
+    if(!teamName || !playerName){ alert("Enter both fields"); return; }
+
+    const team = teamsData.find(t => t.team.toLowerCase() === teamName.toLowerCase());
+    if(team){
+        team.roster.push(playerName);
+        newPlayerEl.value="";
+        updateTeams();
+        showRoster(team);
+    }else{
+        alert("Team not found");
+    }
+}
+
+// Show Roster
+function showRoster(team){
+    rosterListEl.innerHTML="";
+    team.roster.forEach(p=>{
+        const li = document.createElement("li");
+        li.textContent = p;
+        rosterListEl.appendChild(li);
+    });
+}
+
+// Search Teams
+searchInputEl.addEventListener("input", function(){
+    const query = this.value.toLowerCase();
+    searchResultsEl.innerHTML="";
+    teamsData.filter(t=>t.team.toLowerCase().includes(query))
+             .forEach(t=>{
+                const li = document.createElement("li");
+                li.textContent = t.team + " [" + t.roster.join(", ") + "]";
+                searchResultsEl.appendChild(li);
+             });
 });
 
-dash.classList.add("hidden");
-done.classList.remove("hidden");
-}
-
-// COUNTDOWN FEB 20
-
+// Countdown
 const target=new Date("Feb 20, 2026 00:00:00").getTime();
-
 setInterval(()=>{
-let d=target-new Date().getTime();
-timer.innerHTML=
-Math.floor(d/86400000)+"d "+
-Math.floor(d%86400000/3600000)+"h "+
-Math.floor(d%3600000/60000)+"m "+
-Math.floor(d%60000/1000)+"s";
+    let d=target-new Date().getTime();
+    timer.innerHTML=
+    Math.floor(d/86400000)+"d "+
+    Math.floor(d%86400000/3600000)+"h "+
+    Math.floor(d%3600000/60000)+"m "+
+    Math.floor(d%60000/1000)+"s";
 },1000);
 
+// Initial Fetch
+fetchTeams();
 </script>
 
 </body>
