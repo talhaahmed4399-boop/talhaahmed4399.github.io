@@ -3,44 +3,56 @@
 <head>
 <meta charset="UTF-8">
 <title>PK LIONS ESPORTS</title>
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width">
 
 <style>
 
+*{box-sizing:border-box}
+
 body{
 margin:0;
-font-family:Arial;
+font-family:Arial,Helvetica,sans-serif;
 background:#050812;
 color:white;
 }
 
+/* HERO */
+
 .hero{
 height:100vh;
-background:url("poster.jpg") center/cover no-repeat;
+background:url("https://drive.google.com/uc?export=view&id=1uAue7LhtvtddKM7JCW-1t1UPfrFhHSkx") center/cover no-repeat;
 display:flex;
 align-items:center;
 justify-content:center;
-text-align:center;
+position:relative;
 }
 
 .overlay{
 position:absolute;
-width:100%;
-height:100%;
-background:rgba(0,0,0,.7);
+inset:0;
+background:rgba(0,0,0,.75);
 }
 
 .hero-inner{
 z-index:2;
+text-align:center;
+}
+
+.logo{
+width:120px;
+border-radius:50%;
+box-shadow:0 0 20px cyan;
+margin-bottom:10px;
 }
 
 h1{
-font-size:48px;
-text-shadow:0 0 20px cyan;
+margin:0;
+font-size:44px;
+text-shadow:0 0 25px cyan;
 }
 
 button{
-padding:12px 30px;
+padding:12px 28px;
 border:none;
 border-radius:30px;
 background:#00ffd5;
@@ -49,18 +61,30 @@ cursor:pointer;
 margin:10px;
 }
 
+/* SECTIONS */
+
 .section{
-padding:30px;
-max-width:900px;
+max-width:1000px;
 margin:auto;
+padding:20px;
 }
 
 .card{
-background:#0d1324;
+background:#0d1224;
 padding:20px;
 border-radius:15px;
 margin:15px 0;
-box-shadow:0 0 20px #00ffd533;
+box-shadow:0 0 25px #00ffd533;
+}
+
+.light{
+width:12px;
+height:12px;
+border-radius:50%;
+background:#00ff00;
+display:inline-block;
+box-shadow:0 0 15px #00ff00;
+margin-right:6px;
 }
 
 input{
@@ -73,19 +97,57 @@ border:none;
 
 .hidden{display:none}
 
-.light{
-width:12px;
-height:12px;
-border-radius:50%;
-background:#00ff00;
-box-shadow:0 0 15px #00ff00;
-display:inline-block;
-margin-right:6px;
+/* PLAYER CARDS */
+
+.players{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(120px,1fr));
+gap:12px;
 }
 
-.news{border-left:4px solid cyan;padding-left:10px;margin:8px 0}
+.player{
+background:#111;
+padding:10px;
+border-radius:10px;
+text-align:center;
+transition:.3s;
+}
 
-.countdown{font-size:22px;margin:10px}
+.player:hover{
+transform:translateY(-5px);
+box-shadow:0 0 15px cyan;
+}
+
+/* BRACKET */
+
+.match{
+background:#111;
+padding:10px;
+border-radius:10px;
+margin:8px 0;
+animation:float 2s infinite alternate;
+}
+
+@keyframes float{
+to{transform:translateY(-6px)}
+}
+
+.news{
+border-left:4px solid cyan;
+padding-left:10px;
+margin:6px 0;
+}
+
+.countdown{
+font-size:22px;
+margin:10px 0;
+}
+
+.footer{
+text-align:center;
+opacity:.6;
+padding:20px;
+}
 
 </style>
 </head>
@@ -96,12 +158,15 @@ margin-right:6px;
 <div class="overlay"></div>
 
 <div class="hero-inner">
+
+<img class="logo" src="https://drive.google.com/uc?export=view&id=1uAue7LhtvtddKM7JCW-1t1UPfrFhHSkx">
+
 <h1>PK LIONS ESPORTS</h1>
 <p>Last Circle Clash – Season 1</p>
 
 <div class="countdown" id="timer"></div>
 
-<button onclick="openRegister()">REGISTER NOW</button>
+<button onclick="openDash()">REGISTER NOW</button>
 
 <a href="https://chat.whatsapp.com/JLhkyWtPQbAE06StUBN8m2">
 <button>JOIN COMMUNITY</button></a>
@@ -113,37 +178,52 @@ margin-right:6px;
 
 <div class="card">
 <span class="light"></span><b>Registration Open</b><br><br>
-Prize Pool: <b>50,000 PKR</b><br>
-Game: PUBG Mobile
+Prize Pool: <b>50,000 PKR</b>
 </div>
 
 <div class="card">
-<h3>News</h3>
+<h3>Latest News</h3>
 <div class="news">🔥 Registration Started – 50K Prize Pool</div>
 <div class="news">📢 PUBG Mobile Last Circle Clash Season 1</div>
-<div class="news">⏳ Event Coming Soon</div>
+<div class="news">⏳ Upcoming Matches Soon</div>
 </div>
 
-<div id="register" class="card hidden">
+<div class="card">
+<h3>Featured Players</h3>
+<div class="players">
+<div class="player">Player</div>
+<div class="player">Player</div>
+<div class="player">Player</div>
+<div class="player">Player</div>
+</div>
+</div>
+
+<div class="card">
+<h3>Live Bracket</h3>
+<div class="match">Team Alpha vs Team Bravo</div>
+<div class="match">Winner Advances</div>
+</div>
+
+<div id="dash" class="card hidden">
 
 <h2>Team Registration</h2>
 
 <input id="team" placeholder="Team Name">
 <input id="tag" placeholder="Team Tag">
 
-<input placeholder="Player 1">
-<input placeholder="Player 2">
-<input placeholder="Player 3">
-<input placeholder="Player 4">
+<input id="p1" placeholder="Player 1">
+<input id="p2" placeholder="Player 2">
+<input id="p3" placeholder="Player 3">
+<input id="p4" placeholder="Player 4">
 
 <input id="igl" placeholder="IGL WhatsApp">
 <input id="sponsor" placeholder="Sponsor WhatsApp">
 
-<button onclick="submitForm()">Submit Registration</button>
+<button onclick="submit()">Submit Registration</button>
 
 </div>
 
-<div id="success" class="card hidden">
+<div id="done" class="card hidden">
 <h2>✅ Congratulations</h2>
 <p>Your team registration has been submitted.</p>
 <p>PK Lions will contact you soon.</p>
@@ -151,48 +231,52 @@ Game: PUBG Mobile
 
 </div>
 
+<div class="footer">
+PK LIONS ESPORTS © 2026
+</div>
+
 <script>
 
-const GOOGLE_SCRIPT="PASTE_YOUR_GOOGLE_SCRIPT_URL";
+// YOUR GOOGLE SHEET SCRIPT
+const SCRIPT_URL="https://script.google.com/macros/s/AKfycbyRONRicyN3pC3Q76JKNqJo-vuDzEpBg4v41_WIxBiyD1kuvxg9_5-IkGmnvhUaeapA/exec";
 
-function openRegister(){
-document.getElementById("register").classList.remove("hidden");
+function openDash(){
+dash.classList.remove("hidden");
 window.scrollTo(0,document.body.scrollHeight);
 }
 
-function submitForm(){
+function submit(){
 
-fetch(GOOGLE_SCRIPT,{
+fetch(SCRIPT_URL,{
 method:"POST",
 mode:"no-cors",
-headers:{"Content-Type":"application/json"},
 body:JSON.stringify({
 team:team.value,
 tag:tag.value,
+p1:p1.value,
+p2:p2.value,
+p3:p3.value,
+p4:p4.value,
 igl:igl.value,
 sponsor:sponsor.value
 })
 });
 
-document.getElementById("register").classList.add("hidden");
-document.getElementById("success").classList.remove("hidden");
+dash.classList.add("hidden");
+done.classList.remove("hidden");
 }
 
-// Countdown to Feb 20
+// COUNTDOWN FEB 20
 
 const target=new Date("Feb 20, 2026 00:00:00").getTime();
 
 setInterval(()=>{
-let now=new Date().getTime();
-let d=target-now;
-
-let days=Math.floor(d/(1000*60*60*24));
-let hrs=Math.floor((d%(1000*60*60*24))/(1000*60*60));
-let min=Math.floor((d%(1000*60*60))/(1000*60));
-let sec=Math.floor((d%(1000*60))/1000);
-
-timer.innerHTML=Registration ends in ${days}d ${hrs}h ${min}m ${sec}s;
-
+let d=target-new Date().getTime();
+timer.innerHTML=
+Math.floor(d/86400000)+"d "+
+Math.floor(d%86400000/3600000)+"h "+
+Math.floor(d%3600000/60000)+"m "+
+Math.floor(d%60000/1000)+"s";
 },1000);
 
 </script>
